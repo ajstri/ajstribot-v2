@@ -30,4 +30,9 @@ public class GetIDCommand implements Command {
 	public String getInfo() {
 		return "Get the ID of an User.";
 	}
+
+	@Override
+	public String category() {
+		return "admin";
+	}
 }
