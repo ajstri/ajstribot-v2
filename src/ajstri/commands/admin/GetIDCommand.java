@@ -1,7 +1,7 @@
-package command.admin;
+package ajstri.commands.admin;
 
 import ajstri.Permission;
-import command.Command;
+import ajstri.commands.Command;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;

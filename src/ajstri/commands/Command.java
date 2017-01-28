@@ -1,4 +1,4 @@
-package command;
+package ajstri.commands;
 
 import ajstri.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;

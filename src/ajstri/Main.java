@@ -3,9 +3,10 @@ package ajstri;
 import java.io.File;
 import java.util.HashMap;
 
-import command.Command;
-import command.CommandExecutor;
-import command.admin.GetIDCommand;
+import ajstri.commands.CommandExecutor;
+import ajstri.commands.admin.GetIDCommand;
+import ajstri.commands.admin.GuildInfoCommand;
+import ajstri.commands.Command;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -31,6 +32,7 @@ public class Main {
 		catch(Exception e) {
 		}
 		cmds.put("getid", new GetIDCommand());
+		cmds.put("guildinfo", new GuildInfoCommand());
 	}
 	
 }

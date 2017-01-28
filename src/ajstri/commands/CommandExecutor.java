@@ -1,4 +1,4 @@
-package command;
+package ajstri.commands;
 
 import ajstri.Data;
 import ajstri.Main;
