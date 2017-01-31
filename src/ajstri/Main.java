@@ -6,6 +6,7 @@ import java.util.HashMap;
 import ajstri.commands.CommandExecutor;
 import ajstri.commands.admin.GetIDCommand;
 import ajstri.commands.admin.GuildInfoCommand;
+import ajstri.commands.admin.UserInfoCommand;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -33,6 +34,7 @@ public class Main {
 		}
 		cmds.put("getid", new GetIDCommand());
 		cmds.put("guildinfo", new GuildInfoCommand());
+		cmds.put("userinfo", new UserInfoCommand());
 	}
 	
 }
