@@ -5,19 +5,19 @@ import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.entities.VoiceChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.managers.impl.AudioManagerImpl;
+import net.dv8tion.jda.core.managers.AudioManager;
 
 public class JoinVoiceCommand implements Command {
 
 	@Override
 	public void execute(MessageReceivedEvent e, String[] args) {
 		if(args!=null) {
-			for(VoiceChannel vc : e.getGuild().getVoiceChannels()) {
-				if(vc.getName().contentEquals(args[1])) {
-					AudioManagerImpl am = new AudioManagerImpl(e.getGuild());
-					am.openAudioConnection(vc);
-				}
-			}
+		    for(VoiceChannel vc : e.getGuild().getVoiceChannels()) {
+		        if(vc.getName().equals(args[1])) {
+		            AudioManager ami = e.getGuild().getAudioManager();
+		            ami.openAudioConnection(vc);
+		        }
+		    }
 		}
 	}
 
