@@ -1,5 +1,6 @@
 package ajstri.commands.custom;
 
+import ajstri.Category;
 import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -22,8 +23,8 @@ public class RumCommand implements Command {
 	}
 
 	@Override
-	public String category() {
-		return "custom";
+	public Category category() {
+		return Category.Custom;
 	}
 
 }

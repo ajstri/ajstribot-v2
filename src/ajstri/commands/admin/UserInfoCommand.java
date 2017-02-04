@@ -3,6 +3,7 @@ package ajstri.commands.admin;
 import java.time.format.DateTimeFormatter;
 
 import ajstri.commands.Command;
+import ajstri.Category;
 import ajstri.Permission;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Member;
@@ -57,8 +58,8 @@ public class UserInfoCommand implements Command {
 	}
 
 	@Override
-	public String category() {
-		return "admin";
+	public Category category() {
+		return Category.Admin;
 	}
 
 }

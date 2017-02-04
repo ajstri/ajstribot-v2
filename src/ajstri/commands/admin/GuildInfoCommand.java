@@ -2,6 +2,7 @@ package ajstri.commands.admin;
 
 import java.time.format.DateTimeFormatter;
 
+import ajstri.Category;
 import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -33,8 +34,8 @@ public class GuildInfoCommand implements Command {
 	}
 
 	@Override
-	public String category() {
-		return "admin";
+	public Category category() {
+		return Category.Admin;
 	}
 
 }

@@ -12,6 +12,7 @@ import ajstri.commands.custom.RumCommand;
 import ajstri.commands.custom.SinCommand;
 import ajstri.commands.fun.BanCommand;
 import ajstri.commands.fun.FishCommand;
+import ajstri.commands.generic.HelpCommand;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -37,6 +38,7 @@ public class Main {
 		} 
 		catch(Exception e) {
 		}
+		cmds.put("help", new HelpCommand());
 		cmds.put("getid", new GetIDCommand());
 		cmds.put("guildinfo", new GuildInfoCommand());
 		cmds.put("userinfo", new UserInfoCommand());

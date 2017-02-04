@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import ajstri.Category;
 import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.entities.Member;
@@ -65,8 +66,8 @@ public class RoleInfoCommand implements Command {
 	}
 
 	@Override
-	public String category() {
-		return "admin";
+	public Category category() {
+		return Category.Admin;
 	}
 	
 }

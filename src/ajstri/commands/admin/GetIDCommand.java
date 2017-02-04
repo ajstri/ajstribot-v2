@@ -1,5 +1,6 @@
 package ajstri.commands.admin;
 
+import ajstri.Category;
 import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.entities.Guild;
@@ -32,7 +33,7 @@ public class GetIDCommand implements Command {
 	}
 
 	@Override
-	public String category() {
-		return "admin";
+	public Category category() {
+		return Category.Admin;
 	}
 }

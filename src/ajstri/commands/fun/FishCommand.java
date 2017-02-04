@@ -1,5 +1,6 @@
 package ajstri.commands.fun;
 
+import ajstri.Category;
 import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -22,8 +23,8 @@ public class FishCommand implements Command {
 	}
 
 	@Override
-	public String category() {
-		return "fun";
+	public Category category() {
+		return Category.Fun;
 	}
 
 }
