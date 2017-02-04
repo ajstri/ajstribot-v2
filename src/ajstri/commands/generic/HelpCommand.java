@@ -13,19 +13,19 @@ public class HelpCommand implements Command {
 	@Override
 	public void execute(MessageReceivedEvent e, String[] args) {
 		if (args != null){
-			StringBuilder sb = new StringBuilder();
+			//StringBuilder sb = new StringBuilder();
 			String[] cmds = Main.cmds.keySet().stream().collect(Collectors.joining(",")).split(",");
 			for(int i = 0; i < cmds.length; i++) {
-				if(Main.cmds.get(cmds[i]).category() == "admin") {
-					sb.append(Data.cmdPrefix + cmds[i] + "\n");
+				if(Main.cmds.get(cmds[i]).category() == "admin" && args[1] == "admin") {
+					e.getTextChannel().sendMessage(Data.cmdPrefix + cmds[i] + "\n");
 				}
 			}
-			if(cmds[i].category() == args[1]){
+			/*if(cmds[i].category() == args[1]){
 			e.getTextChannel().sendMessage("Commands: \n"
 					+ "\n"
 					+ sb.toString()
 					+ "").queue();
-			}
+			}*/
 		}
 		else {
 			e.getTextChannel().sendMessage("You Failed").queue();
