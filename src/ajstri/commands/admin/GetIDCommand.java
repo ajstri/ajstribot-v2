@@ -10,7 +10,7 @@ public class GetIDCommand implements Command {
 
 	@Override
 	public void execute(MessageReceivedEvent e, String[] args) {
-		if(args!=null) {
+		if(args != null) {
 			Guild g = e.getGuild();
 			for(Member m : g.getMembers()) {
 				if(m.getEffectiveName().equals(args[1])) {
