@@ -20,10 +20,12 @@ public class HelpCommand implements Command {
 					sb.append(Data.cmdPrefix + cmds[i] + "\n");
 				}
 			}
+			if(cmds[i].category() == args[1]){
 			e.getTextChannel().sendMessage("Commands: \n"
 					+ "\n"
 					+ sb.toString()
 					+ "").queue();
+			}
 		}
 		else {
 			e.getTextChannel().sendMessage("You Failed").queue();
