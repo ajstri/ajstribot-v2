@@ -1,29 +1,29 @@
-package ajstri.commands.fun;
+package ajstri.commands.custom;
 
 import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class FishCommand implements Command {
+public class CrockCommand implements Command {
 
 	@Override
 	public void execute(MessageReceivedEvent e, String[] args) {
-		e.getTextChannel().sendMessage("Fish, fish! Everyone gets a fish! :fish:").queue();
+		e.getTextChannel().sendMessage("this is gonna be decided later i guess").queue();
 	}
 
 	@Override
 	public Permission getValidExecutors() {
-		return Permission.Everyone;
+		return Permission.Crock;
 	}
 
 	@Override
 	public String getInfo() {
-		return "Fish Command";
+		return "Custom Command: Crock";
 	}
 
 	@Override
 	public String category() {
-		return "fun";
+		return "custom";
 	}
 
 }

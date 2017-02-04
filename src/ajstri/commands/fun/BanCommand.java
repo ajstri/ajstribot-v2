@@ -8,7 +8,7 @@ public class BanCommand implements Command {
 
 	@Override
 	public void execute(MessageReceivedEvent e, String[] args) {
-		e.getChannel().sendMessage("I can drop the BAN HAMMER on you!");
+		e.getTextChannel().sendMessage("I can drop the BAN HAMMER on you!").queue();
 	}
 
 	@Override

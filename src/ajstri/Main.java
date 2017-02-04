@@ -7,6 +7,10 @@ import ajstri.commands.CommandExecutor;
 import ajstri.commands.admin.GetIDCommand;
 import ajstri.commands.admin.GuildInfoCommand;
 import ajstri.commands.admin.UserInfoCommand;
+import ajstri.commands.custom.CrockCommand;
+import ajstri.commands.custom.RumCommand;
+import ajstri.commands.custom.SinCommand;
+import ajstri.commands.fun.BanCommand;
 import ajstri.commands.fun.FishCommand;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.AccountType;
@@ -37,6 +41,10 @@ public class Main {
 		cmds.put("guildinfo", new GuildInfoCommand());
 		cmds.put("userinfo", new UserInfoCommand());
 		cmds.put("fish", new FishCommand());
+		cmds.put("ban", new BanCommand());
+		cmds.put("rum", new RumCommand());
+		cmds.put("sin", new SinCommand());
+		cmds.put("crock", new CrockCommand());
 	}
 	
 }
