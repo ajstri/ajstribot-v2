@@ -15,12 +15,14 @@ import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.entities.Icon;
+import net.dv8tion.jda.core.managers.AudioManager;
 
 public class Main {
 	
 	public static JDA api;
 	public static String id;
 	public static HashMap<String, Command> cmds = new HashMap<String, Command>();
+	public static AudioManager ami;
 	
 	public static void main(String[] args) {
 		try {
@@ -29,7 +31,7 @@ public class Main {
 			if(f.exists()) api.getSelfUser().getManager().setAvatar(Icon.from(f)).queue(); 
 			api.getPresence().setGame(Game.of("Confusion!"));
 			api.addEventListener(new CommandExecutor());
-			api.addEventListener(new MusicCommands());
+			//api.addEventListener(new MusicCommands());
 			api.setAutoReconnect(true);
 			id = api.getSelfUser().getId();
 		} 
@@ -45,6 +47,7 @@ public class Main {
 		cmds.put("sin", new SinCommand());
 		cmds.put("crock", new CrockCommand());
 		cmds.put("join", new JoinVoiceCommand());
+		cmds.put("leave", new LeaveVoiceCommand());
 	}
 	
 }
