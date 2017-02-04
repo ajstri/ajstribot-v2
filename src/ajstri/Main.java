@@ -3,17 +3,13 @@ package ajstri;
 import java.io.File;
 import java.util.HashMap;
 
-import ajstri.commands.CommandExecutor;
-import ajstri.commands.admin.GetIDCommand;
-import ajstri.commands.admin.GuildInfoCommand;
-import ajstri.commands.admin.UserInfoCommand;
-import ajstri.commands.custom.CrockCommand;
-import ajstri.commands.custom.RumCommand;
-import ajstri.commands.custom.SinCommand;
-import ajstri.commands.fun.BanCommand;
-import ajstri.commands.fun.FishCommand;
-import ajstri.commands.generic.HelpCommand;
 import ajstri.commands.Command;
+import ajstri.commands.CommandExecutor;
+import ajstri.commands.admin.*;
+import ajstri.commands.custom.*;
+import ajstri.commands.fun.*;
+import ajstri.commands.generic.*;
+import ajstri.commands.music.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -33,6 +29,7 @@ public class Main {
 			if(f.exists()) api.getSelfUser().getManager().setAvatar(Icon.from(f)).queue(); 
 			api.getPresence().setGame(Game.of("Confusion!"));
 			api.addEventListener(new CommandExecutor());
+			api.addEventListener(new MusicCommands());
 			api.setAutoReconnect(true);
 			id = api.getSelfUser().getId();
 		} 
@@ -47,6 +44,7 @@ public class Main {
 		cmds.put("rum", new RumCommand());
 		cmds.put("sin", new SinCommand());
 		cmds.put("crock", new CrockCommand());
+		cmds.put("join", new JoinVoiceCommand());
 	}
 	
 }
