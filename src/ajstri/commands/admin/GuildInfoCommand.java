@@ -24,7 +24,7 @@ public class GuildInfoCommand implements Command {
 
 	@Override
 	public Permission getValidExecutors() {
-		return Permission.Everyone;
+		return Permission.Admins;
 	}
 
 	@Override
