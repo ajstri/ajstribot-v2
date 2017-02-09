@@ -31,7 +31,6 @@ public class Main {
 			if(f.exists()) api.getSelfUser().getManager().setAvatar(Icon.from(f)).queue(); 
 			api.getPresence().setGame(Game.of("Confusion!"));
 			api.addEventListener(new CommandExecutor());
-			//api.addEventListener(new MusicCommands());
 			api.setAutoReconnect(true);
 			id = api.getSelfUser().getId();
 		} 
