@@ -47,6 +47,7 @@ public class Main {
 		cmds.put("crock", new CrockCommand());
 		cmds.put("join", new JoinVoiceCommand());
 		cmds.put("leave", new LeaveVoiceCommand());
+		cmds.put("giggle", new GiggleCommand());
 	}
 	
 }
