@@ -48,6 +48,9 @@ public class Main {
 		cmds.put("join", new JoinVoiceCommand());
 		cmds.put("leave", new LeaveVoiceCommand());
 		cmds.put("giggle", new GiggleCommand());
+		cmds.put("denoobz", new DenoobzCommand());
+		cmds.put("YDYT", new YDYTCommand());
+		cmds.put("svearald", new SvearaldCommand());
 	}
 	
 }
