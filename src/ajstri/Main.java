@@ -49,5 +49,4 @@ public class Main {
 		cmds.put("leave", new LeaveVoiceCommand());
 		cmds.put("giggle", new GiggleCommand());
 	}
-	
 }
