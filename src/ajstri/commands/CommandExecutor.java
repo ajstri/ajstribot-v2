@@ -49,20 +49,8 @@ public class CommandExecutor extends ListenerAdapter {
 					String cmd = args[0].replace(Data.cmdPrefix, "");
 					if(Main.cmds.containsKey(cmd.toLowerCase())) {
 						Command iCMD = Main.cmds.get(cmd.toLowerCase());
-						if(iCMD.getValidExecutors()==Permission.Everyone) {
-							iCMD.execute(event, args);
-							return;
-						} 
-						else {
-							for(String allowed : iCMD.getValidExecutors().getUsers()) {
-								if(event.getAuthor().getId().equals(allowed)) {
-									iCMD.execute(event, args);
-									return;
-								}
-							}
-							event.getChannel().sendMessage("You cannot execute the command "+cmd+", silly!").queue();
-							return;
-						}
+						iCMD.execute(event, args);
+						return;
 					}
 				}
 			}
