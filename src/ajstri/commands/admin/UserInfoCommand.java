@@ -5,16 +5,17 @@ import java.time.format.DateTimeFormatter;
 import ajstri.commands.Command;
 import ajstri.Category;
 import ajstri.Permission;
+import ajstri.UserUtils;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
 public class UserInfoCommand implements Command {
 
     @Override
-    public void execute(MessageReceivedEvent e, String[] args) {
+    public void execute(GuildMessageReceivedEvent e, String[] args) {
         if(args.length > 1) {
             Member m = null;
             for(Member mi : e.getGuild().getMembers()) {
@@ -25,7 +26,7 @@ public class UserInfoCommand implements Command {
                 }
             }    
             if(m == null) {
-                e.getTextChannel().sendMessage("Didn't find the Requested User!").queue();
+                e.getChannel().sendMessage("Didn't find the Requested User!").queue();
                 return;
             }
             String roles = "";
@@ -36,7 +37,7 @@ public class UserInfoCommand implements Command {
                 roles = "<no Roles>";
             } else 
                 roles = roles.substring(0, roles.length()-2);
-            e.getTextChannel().sendMessage(""
+            e.getChannel().sendMessage(""
                     + "**Name:** "+m.getEffectiveName()+"\n"
                     + "**Created:** "+m.getUser().getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
                     + "**Roles:** "+roles+"\n"
@@ -45,12 +46,14 @@ public class UserInfoCommand implements Command {
                     + "**OnlineStatus:** "+(m.getOnlineStatus()==OnlineStatus.INVISIBLE?"OFFLINE":m.getOnlineStatus().toString())+"\n"
                     + "**Avatar:** "+m.getUser().getAvatarUrl()
                     + "").queue();
+            System.out.println("Executed in Guild: USERINFO");
         }
     }
     
     @Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-    	e.getChannel().sendMessage("B-b-b-b-but...this isn't a *guild*!").queue();
+    	UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
+    	System.out.println("Attempt to Execute in DM: USERINFO");
 	}
 
 	@Override

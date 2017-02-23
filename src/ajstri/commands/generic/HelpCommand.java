@@ -7,21 +7,23 @@ import ajstri.Category;
 import ajstri.Data;
 import ajstri.Main;
 import ajstri.Permission;
+import ajstri.UserUtils;
 import ajstri.commands.Command;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
 public class HelpCommand implements Command {
 	
 	@Override
-	public void execute(MessageReceivedEvent e, String[] args) {
+	public void execute(GuildMessageReceivedEvent e, String[] args) {
 		if(args!=null) {
 			StringBuilder sb = new StringBuilder();
 			if(args.length==1) {
 				for(Category c : Category.values()) {
 					sb.append("*"+c.getName()+"*\n");
 				}
-				e.getTextChannel().sendMessage("**Help: **Categorys\n"+sb.toString()).queue();
+				e.getChannel().sendMessage("**Help: **Categorys\n"+sb.toString()).queue();
+				System.out.println("Executed in Guild: HELP");
 			}
 			if(args.length>=2) {
 				String cat = args[1];
@@ -32,7 +34,8 @@ public class HelpCommand implements Command {
 					Command cmd = Main.cmds.get(keySet.get(i));
 					if(cmd.category().getName().equalsIgnoreCase(cat)) sb.append("*"+Data.cmdPrefix+keySet.get(i)+"* | "+cmd.getInfo()+"\n");
 				}
-				e.getTextChannel().sendMessage("**Help: **Category: "+cat+"\n"+sb.toString()).queue();
+				e.getChannel().sendMessage("**Help: **Category: "+cat+"\n"+sb.toString()).queue();
+				System.out.println("Executed in Guild: HELP");
 			}
 		}
 	}
@@ -45,7 +48,8 @@ public class HelpCommand implements Command {
 				for(Category c : Category.values()) {
 					sb.append("*"+c.getName()+"*\n");
 				}
-				e.getChannel().sendMessage("**Help: **Categorys\n"+sb.toString()).queue();
+				UserUtils.sendPrivateMessage2(e, "**Help: **Categorys\n"+sb.toString());
+				System.out.println("Executed in DM: HELP");
 			}
 			if(args.length>=2) {
 				String cat = args[1];
@@ -56,7 +60,8 @@ public class HelpCommand implements Command {
 					Command cmd = Main.cmds.get(keySet.get(i));
 					if(cmd.category().getName().equalsIgnoreCase(cat)) sb.append("*"+Data.cmdPrefix+keySet.get(i)+"* | "+cmd.getInfo()+"\n");
 				}
-				e.getChannel().sendMessage("**Help: **Category: "+cat+"\n"+sb.toString()).queue();
+				UserUtils.sendPrivateMessage2(e, "**Help: **Category: "+cat+"\n"+sb.toString());
+				System.out.println("Executed in DM: HELP");
 			}
 		}
 	}

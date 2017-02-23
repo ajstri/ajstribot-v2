@@ -5,14 +5,14 @@ import ajstri.Permission;
 import ajstri.UserUtils;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
 public class EmbedCommand implements Command {
 
-	public void execute(MessageReceivedEvent e, String[] args) {
+	public void execute(GuildMessageReceivedEvent e, String[] args) {
 		User m = e.getAuthor();
-		e.getTextChannel().sendMessage(m.getAsMention() + ": What do you want?").queue();
+		e.getChannel().sendMessage(m.getAsMention() + ": What do you want?").queue();
 		UserUtils.sendPrivateMessage(e, "Hi, I like you");
 	}
 	

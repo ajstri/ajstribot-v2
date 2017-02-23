@@ -6,7 +6,6 @@ import java.util.HashMap;
 import ajstri.commands.Command;
 import ajstri.commands.CommandExecutor;
 import ajstri.commands.admin.*;
-import ajstri.commands.custom.*;
 import ajstri.commands.fun.*;
 import ajstri.commands.generic.*;
 import ajstri.commands.music.*;
@@ -40,16 +39,13 @@ public class Main {
 		cmds.put("guildinfo", new GuildInfoCommand());
 		cmds.put("userinfo", new UserInfoCommand());
 		cmds.put("fish", new FishCommand());
-		cmds.put("ban", new BanCommand());
-		cmds.put("rum", new RumCommand());
-		cmds.put("sin", new SinCommand());
-		cmds.put("crock", new CrockCommand());
+		cmds.put("banhammer", new BanHammerCommand());
 		cmds.put("join", new JoinVoiceCommand());
 		cmds.put("leave", new LeaveVoiceCommand());
 		cmds.put("giggle", new GiggleCommand());
-		cmds.put("denoobz", new DenoobzCommand());
-		cmds.put("ydyt", new YDYTCommand());
-		cmds.put("svearald", new SvearaldCommand());
 		cmds.put("em", new EmbedCommand());
+		cmds.put("adtes", new AdminTestCommand());
+		cmds.put("ban", new BanCommand());
+		cmds.put("welcome", new WelcomeCommand());
 	}
 }

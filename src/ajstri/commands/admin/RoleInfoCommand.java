@@ -6,16 +6,17 @@ import java.util.stream.Collectors;
 
 import ajstri.Category;
 import ajstri.Permission;
+import ajstri.UserUtils;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
 public class RoleInfoCommand implements Command {
 	
 	@Override
-	public void execute(MessageReceivedEvent e, String[] args) {
+	public void execute(GuildMessageReceivedEvent e, String[] args) {
 		if(args!=null) {
 			if(args.length>=2) {
 				Role r = null;
@@ -39,26 +40,30 @@ public class RoleInfoCommand implements Command {
 						}
 					}
 					Color c = r.getColor();
-					e.getTextChannel().sendMessage(""
+					e.getChannel().sendMessage(""
 							+ "**Name: **"+r.getName()+"\n"
 							+ "**User(s) with Role: **"+usercount+"\n"
 							+ "**Position: **"+r.getPosition()+"\n"
 							+ "**ColorValues **"+"[Red:"+c.getRed()+", Green:"+c.getGreen()+", Blue:"+c.getBlue()+"]"
 							+ "").queue();
-				} else {
-					e.getTextChannel().sendMessage("Sorry... Didnt find the Requested Role!").queue();
+					System.out.println("Executed in Guild: ROLEINFO");
+				} else 
+				{
+					e.getChannel().sendMessage("Sorry... Didnt find the Requested Role!").queue();
+					System.out.println("Attempted to Execute in Guild: ROLEINFO");
 					return;
 				}
 			}
 		} else {
-			e.getTextChannel().sendMessage("Invalid Command!").queue();
+			e.getChannel().sendMessage("Invalid Command!").queue();
 			return;
 		}
 	}
 	
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		e.getChannel().sendMessage("B-b-b-b-but...this isn't a *guild*!").queue();
+		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
+		System.out.println("Attempted to Execute in DM: ROLEINFO");
 	}
 	
 	@Override
