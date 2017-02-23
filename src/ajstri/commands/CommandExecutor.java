@@ -3,7 +3,6 @@ package ajstri.commands;
 import ajstri.Data;
 import ajstri.Main;
 import ajstri.Permission;
-import net.dv8tion.jda.client.events.relationship.FriendRequestReceivedEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;

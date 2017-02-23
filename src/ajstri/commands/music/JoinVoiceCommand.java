@@ -3,6 +3,7 @@ package ajstri.commands.music;
 import ajstri.Category;
 import ajstri.Main;
 import ajstri.Permission;
+import ajstri.UserUtils;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.entities.VoiceChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -26,7 +27,7 @@ public class JoinVoiceCommand implements Command {
 	
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		e.getAuthor().getPrivateChannel().startCall();
+		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
 	}
 
 	@Override
