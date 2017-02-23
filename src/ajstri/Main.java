@@ -13,7 +13,6 @@ import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.entities.Game;
-import net.dv8tion.jda.core.entities.Icon;
 import net.dv8tion.jda.core.managers.AudioManager;
 
 public class Main {
@@ -25,9 +24,7 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			api = new JDABuilder(AccountType.BOT).setToken(Data.TOKEN).buildBlocking();
-			File f = new File("FirePicture.png");
-			if(f.exists()) api.getSelfUser().getManager().setAvatar(Icon.from(f)).queue(); 
-			api.getPresence().setGame(Game.of("Confusion!"));
+			api.getPresence().setGame(Game.of("/welcome to begin!"));
 			api.addEventListener(new CommandExecutor());
 			api.setAutoReconnect(true);
 			id = api.getSelfUser().getId();

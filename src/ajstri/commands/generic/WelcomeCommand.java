@@ -16,7 +16,8 @@ public class WelcomeCommand implements Command {
 				   "One of my Commands, `/ban`, requires I be higher in"
 				   + "the heirarchy than the member to be kicked. Keep this in mind! " +
 				   "Admin commands are sorted by default. If you have Administrative privilages, "
-				   + "you can use them in a guild!");
+				   + "you can use them in a guild! \n" +
+				   "Type `/help` to begin...");
 		System.out.println("Executed in Guild: WELCOME");
 	}
 
@@ -27,7 +28,8 @@ public class WelcomeCommand implements Command {
 				   "One of my Commands, `/ban`, requires I be higher in"
 				   + "the heirarchy than the member to be kicked. Keep this in mind! " +
 				   "Admin commands are sorted by default. If you have Administrative privilages, "
-				   + "you can use them in a guild!");
+				   + "you can use them in a guild! \n" +
+				   "Type `/help` to begin...");
 		System.out.println("Executed in DM: WELCOME");
 	}
 
