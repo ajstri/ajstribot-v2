@@ -18,7 +18,6 @@ import net.dv8tion.jda.core.entities.Icon;
 import net.dv8tion.jda.core.managers.AudioManager;
 
 public class Main {
-	
 	public static JDA api;
 	public static String id;
 	public static HashMap<String, Command> cmds = new HashMap<String, Command>();
@@ -51,6 +50,6 @@ public class Main {
 		cmds.put("denoobz", new DenoobzCommand());
 		cmds.put("ydyt", new YDYTCommand());
 		cmds.put("svearald", new SvearaldCommand());
+		cmds.put("em", new EmbedCommand());
 	}
-	
 }

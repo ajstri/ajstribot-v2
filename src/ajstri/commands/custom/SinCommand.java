@@ -4,6 +4,7 @@ import ajstri.Category;
 import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
 public class SinCommand implements Command {
 
@@ -11,7 +12,12 @@ public class SinCommand implements Command {
 	public void execute(MessageReceivedEvent e, String[] args) {
 		e.getTextChannel().sendMessage("I don't know what's going on here.").queue();
 	}
-
+	
+	@Override
+	public void execute(PrivateMessageReceivedEvent e, String[] args) {
+		e.getChannel().sendMessage("I don't know what's going on here.").queue();
+	}
+	
 	@Override
 	public Permission getValidExecutors() {
 		return Permission.Sin;
@@ -26,5 +32,4 @@ public class SinCommand implements Command {
 	public Category category() {
 		return Category.Custom;
 	}
-
 }

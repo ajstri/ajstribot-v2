@@ -1,35 +1,38 @@
-package ajstri.commands.custom;
+package ajstri.commands.admin;
 
 import ajstri.Category;
 import ajstri.Permission;
+import ajstri.UserUtils;
 import ajstri.commands.Command;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
-public class CrockCommand implements Command {
+public class EmbedCommand implements Command {
 
-	@Override
 	public void execute(MessageReceivedEvent e, String[] args) {
-		e.getTextChannel().sendMessage("As you wish!").queue();
-	}
-
-	@Override
-	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		e.getChannel().sendMessage("As you wish!").queue();
+		User m = e.getAuthor();
+		e.getTextChannel().sendMessage(m.getAsMention() + ": What do you want?").queue();
+		UserUtils.sendPrivateMessage(e, "Hi, I like you");
 	}
 	
 	@Override
+	public void execute(PrivateMessageReceivedEvent e, String[] args) {
+		UserUtils.sendPrivateMessage2(e, "Hi, I like you");
+	}
+
+	@Override
 	public Permission getValidExecutors() {
-		return Permission.Crock;
+		return Permission.Admins;
 	}
 
 	@Override
 	public String getInfo() {
-		return "Custom Command: Crock";
+		return "Test Command";
 	}
 
 	@Override
 	public Category category() {
-		return Category.Custom;
+		return Category.Admin;
 	}
 }

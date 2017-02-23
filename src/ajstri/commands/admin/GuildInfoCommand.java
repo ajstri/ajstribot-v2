@@ -6,6 +6,7 @@ import ajstri.Category;
 import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
 public class GuildInfoCommand implements Command {
 
@@ -22,7 +23,11 @@ public class GuildInfoCommand implements Command {
                 + "").queue();
 
 	}
-
+	
+	@Override
+	public void execute(PrivateMessageReceivedEvent e, String[] args) {
+		e.getChannel().sendMessage("B-b-b-b-but...this isn't a *guild*!").queue();
+	}
 	@Override
 	public Permission getValidExecutors() {
 		return Permission.Admins;
@@ -37,5 +42,4 @@ public class GuildInfoCommand implements Command {
 	public Category category() {
 		return Category.Admin;
 	}
-
 }

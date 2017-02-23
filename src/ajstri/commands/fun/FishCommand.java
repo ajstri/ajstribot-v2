@@ -4,12 +4,18 @@ import ajstri.Category;
 import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
 public class FishCommand implements Command {
 
 	@Override
 	public void execute(MessageReceivedEvent e, String[] args) {
 		e.getTextChannel().sendMessage("Fish, fish! Everyone gets a fish! :fish:").queue();
+	}
+	
+	@Override
+	public void execute(PrivateMessageReceivedEvent e, String[] args) {
+		e.getChannel().sendMessage("Fish, fish! Everyone gets a fish! :fish:").queue();
 	}
 
 	@Override
@@ -26,5 +32,7 @@ public class FishCommand implements Command {
 	public Category category() {
 		return Category.Fun;
 	}
+
+	
 
 }

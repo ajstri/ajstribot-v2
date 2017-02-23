@@ -6,6 +6,7 @@ import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.entities.VoiceChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
 public class JoinVoiceCommand implements Command {
 
@@ -17,9 +18,15 @@ public class JoinVoiceCommand implements Command {
 		        if((vc.getName().substring(2)).equals(args[1])) {
 		            Main.ami = e.getGuild().getAudioManager();
 		            Main.ami.openAudioConnection(vc);
+		            e.getTextChannel().sendMessage("Connected To: **" + vc.getName() + "**").queue();
 		        }
 		    }
 		}
+	}
+	
+	@Override
+	public void execute(PrivateMessageReceivedEvent e, String[] args) {
+		e.getAuthor().getPrivateChannel().startCall();
 	}
 
 	@Override

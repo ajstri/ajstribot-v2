@@ -4,6 +4,7 @@ import ajstri.Category;
 import ajstri.Permission;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
 public class BanCommand implements Command {
 
@@ -11,7 +12,12 @@ public class BanCommand implements Command {
 	public void execute(MessageReceivedEvent e, String[] args) {
 		e.getTextChannel().sendMessage("I can drop the BAN HAMMER on you!").queue();
 	}
-
+	
+	@Override
+	public void execute(PrivateMessageReceivedEvent e, String[] args) {
+		e.getChannel().sendMessage("I can drop the BAN HAMMER on you!").queue();
+	}
+	
 	@Override
 	public Permission getValidExecutors() {
 		return Permission.Everyone;
@@ -26,5 +32,4 @@ public class BanCommand implements Command {
 	public Category category() {
 		return Category.Fun;
 	}
-
 }
