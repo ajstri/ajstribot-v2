@@ -15,12 +15,18 @@ public class JoinVoiceCommand implements Command {
 	public void execute(GuildMessageReceivedEvent e, String[] args) {
 		if(args!=null) {
 		    for(VoiceChannel vc : e.getGuild().getVoiceChannels()) {
-		    	System.out.println(vc.getName().substring(2));
 		        if((vc.getName().substring(2)).equals(args[1])) {
 		            Main.ami = e.getGuild().getAudioManager();
 		            Main.ami.openAudioConnection(vc);
 		            e.getChannel().sendMessage("Connected To: **" + vc.getName() + "**").queue();
 		            System.out.println("Executed in Guild: JOIN");
+		        } else {
+		        	if(vc.getName().equals(args[1])){
+		        		Main.ami = e.getGuild().getAudioManager();
+			            Main.ami.openAudioConnection(vc);
+			            e.getChannel().sendMessage("Connected To: **" + vc.getName() + "**").queue();
+			            System.out.println("Executed in Guild: JOIN");
+		        	}
 		        }
 		    }
 		}
