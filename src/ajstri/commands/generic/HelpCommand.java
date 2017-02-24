@@ -32,7 +32,13 @@ public class HelpCommand implements Command {
 				Collections.sort(keySet);
 				for(int i = 0; i < keySet.size(); i++) {
 					Command cmd = Main.cmds.get(keySet.get(i));
-					if(cmd.category().getName().equalsIgnoreCase(cat)) sb.append("*" + Data.cmdPrefix + keySet.get(i) + "* || " + cmd.getInfo()+"\n");
+					if(cmd.category()==null) {
+						System.out.println("The Category for "+keySet.get(i)+" is null!");
+					} else if(cmd.category().getName().equalsIgnoreCase(cat)) {
+						if(cmd.getInfo()==null) {
+							System.out.println("The Info for "+keySet.get(i)+" is null!");
+						} else sb.append("*" + Data.cmdPrefix + keySet.get(i) + "* || " + cmd.getInfo()+"\n");
+					}
 				}
 				e.getChannel().sendMessage("**Help: **Category: " + cat + "\n" + sb.toString()).queue();
 				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
