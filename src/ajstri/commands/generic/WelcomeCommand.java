@@ -4,7 +4,6 @@ import ajstri.Category;
 import ajstri.Permission;
 import ajstri.UserUtils;
 import ajstri.commands.Command;
-import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
@@ -12,7 +11,7 @@ public class WelcomeCommand implements Command {
 
 	@Override
 	public void execute(GuildMessageReceivedEvent e, String[] args) {
-		e.getChannel().sendMessage(e.getAuthor().getAsMention() + ", I sent you a DM.");
+		e.getChannel().sendMessage(e.getAuthor().getAsMention() + ", I sent you a DM.").queue();
 		UserUtils.sendPrivateMessage(e, "Hi! I am AJStriBot. " +
 				   "Thanks for choosing me! " +
 				   "One of my Commands, `/ban`, requires I be higher in"
