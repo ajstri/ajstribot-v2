@@ -30,7 +30,7 @@ public class HelpCommand implements Command {
 				ArrayList<String> keySet = new ArrayList<String>();
 				for(String ck : Main.cmds.keySet()) keySet.add(ck);
 				Collections.sort(keySet);
-				for(int i = 0; i<keySet.size(); i++) {
+				for(int i = 0; i < keySet.size(); i++) {
 					Command cmd = Main.cmds.get(keySet.get(i));
 					if(cmd.category().getName().equalsIgnoreCase(cat)) sb.append("*" + Data.cmdPrefix + keySet.get(i) + "* || " + cmd.getInfo()+"\n");
 				}

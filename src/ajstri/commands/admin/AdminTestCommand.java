@@ -11,31 +11,26 @@ public class AdminTestCommand implements Command {
 	@Override
 	public void execute(GuildMessageReceivedEvent e, String[] args) {
 		System.out.println(e.getMember().getPermissions());
-		
 	}
 
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public Permission getValidExecutors() {
-		// TODO Auto-generated method stub
-		return null;
+		return Permission.Admins;
 	}
 
 	@Override
 	public String getInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Yes";
 	}
 
 	@Override
 	public Category category() {
-		// TODO Auto-generated method stub
-		return null;
+		return Category.Admin;
 	}
 
 }
