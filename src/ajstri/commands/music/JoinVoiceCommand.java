@@ -19,13 +19,13 @@ public class JoinVoiceCommand implements Command {
 		            Main.ami = e.getGuild().getAudioManager();
 		            Main.ami.openAudioConnection(vc);
 		            e.getChannel().sendMessage("Connected To: **" + vc.getName() + "**").queue();
-		            System.out.println("Executed in Guild: JOIN");
+		            System.out.println(e.getAuthor() + "Executed in Guild: JOIN");
 		        } else {
 		        	if(vc.getName().equals(args[1])){
 		        		Main.ami = e.getGuild().getAudioManager();
 			            Main.ami.openAudioConnection(vc);
 			            e.getChannel().sendMessage("Connected To: **" + vc.getName() + "**").queue();
-			            System.out.println("Executed in Guild: JOIN");
+			            System.out.println(e.getAuthor() + "Executed in Guild: JOIN");
 		        	}
 		        }
 		    }
@@ -35,7 +35,7 @@ public class JoinVoiceCommand implements Command {
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
 		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-		System.out.println("Attempt to Execute in DM: JOIN");
+		System.out.println(e.getAuthor() + "Attempt to Execute in DM: JOIN");
 	}
 
 	@Override

@@ -21,12 +21,16 @@ public class UserInfoCommand implements Command {
             for(Member mi : e.getGuild().getMembers()) {
                 if(mi.getEffectiveName().equals(args[1].replace("@", ""))) {
                     m = mi;
-                    System.out.println(""+mi.getEffectiveName()+" ? "+args[1]);
+                    break;
+                }
+                if(mi.getEffectiveName().equals(args[1])) {
+                    m = mi;
                     break;
                 }
             }    
             if(m == null) {
                 e.getChannel().sendMessage("Didn't find the Requested User!").queue();
+                System.out.println(e.getAuthor() + "Attempt to Execute in Guild: USERINFO");
                 return;
             }
             String roles = "";
@@ -46,14 +50,14 @@ public class UserInfoCommand implements Command {
                     + "**OnlineStatus:** "+(m.getOnlineStatus()==OnlineStatus.INVISIBLE?"OFFLINE":m.getOnlineStatus().toString())+"\n"
                     + "**Avatar:** "+m.getUser().getAvatarUrl()
                     + "").queue();
-            System.out.println("Executed in Guild: USERINFO");
+            System.out.println(e.getAuthor() + "Executed in Guild: USERINFO");
         }
     }
     
     @Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
     	UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-    	System.out.println("Attempt to Execute in DM: USERINFO");
+    	System.out.println(e.getAuthor() + "Attempt to Execute in DM: USERINFO");
 	}
 
 	@Override

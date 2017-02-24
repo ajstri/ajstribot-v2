@@ -14,13 +14,13 @@ public class LeaveVoiceCommand implements Command {
 	public void execute(GuildMessageReceivedEvent e, String[] args) {
 		if(Main.ami!=null) Main.ami.closeAudioConnection();
 		e.getChannel().sendMessage("Okay, bye! Have a nice day :wink:").queue();
-		System.out.println("Executed in Guild: LEAVE");
+		System.out.println(e.getAuthor() + "Executed in Guild: LEAVE");
 	}
 	
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
 		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-		System.out.println("Attempt to Execute in DM: LEAVE");
+		System.out.println(e.getAuthor() + "Attempt to Execute in DM: LEAVE");
 	}
 	
 	@Override

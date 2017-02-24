@@ -22,14 +22,14 @@ public class GuildInfoCommand implements Command {
                 + "**Voice Channel Count:** " + e.getGuild().getVoiceChannels().size() + "\n"
                 + "**Server Image:** " + e.getGuild().getIconUrl()
                 + "").queue();
-		System.out.println("Executed in Guild: GUILDINFO");
+		System.out.println(e.getAuthor() + "Executed in Guild: GUILDINFO");
 
 	}
 	
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
 		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-		System.out.println("Attempt to Execute in DM: GUILDINFO");
+		System.out.println(e.getAuthor() + "Attempt to Execute in DM: GUILDINFO");
 	}
 	@Override
 	public Permission getValidExecutors() {

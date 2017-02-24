@@ -23,7 +23,7 @@ public class BanCommand implements Command {
                 {
                     e.getChannel().sendMessage("Cannot kicked member: " + m.getEffectiveName() +", they are higher " +
                             "in the hierachy than I am!").queue();
-                    System.out.println("Attempted to Execute in Guild: BAN");
+                    System.out.println(e.getAuthor() + "Attempted to Execute in Guild: BAN");
                     continue;
                 }
                 g.getController().kick(m).queue(
@@ -36,13 +36,13 @@ public class BanCommand implements Command {
                             
                             e.getChannel().sendMessage("PermissionError kicking [" + m.getEffectiveName()
                                     + "]").queue();
-                            System.out.println("Attempted to Execute in Guild: BAN");
+                            System.out.println(e.getAuthor() + "Attempted to Execute in Guild: BAN");
                         }
                         else
                         {
                             e.getChannel().sendMessage("Unknown error while kicking [" + m.getEffectiveName()
                                     + "]: " + "<" + error.getClass().getSimpleName() + ">: " + error.getMessage()).queue();
-                            System.out.println("Attempted to Execute in Guild: BAN");
+                            System.out.println(e.getAuthor() + "Attempted to Execute in Guild: BAN");
                         }
                     });
 			}

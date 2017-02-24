@@ -16,9 +16,13 @@ public class GetIDCommand implements Command {
 		if(args != null) {
 			Guild g = e.getGuild();
 			for(Member m : g.getMembers()) {
-				if(m.getEffectiveName().equals(args[1])) {
+				if(m.getEffectiveName().equals(args[1].replace("@", ""))) {
 					e.getChannel().sendMessage("UserID: " + m.getUser().getId()).queue();
-					System.out.println("Executed in Guild: GETID");
+					System.out.println(e.getAuthor() + "Executed in Guild: GETID");
+					break;
+				} else if(m.getEffectiveName().equals(args[1])) {
+					e.getChannel().sendMessage("UserID: " + m.getUser().getId()).queue();
+					System.out.println(e.getAuthor() + "Executed in Guild: GETID");
 					break;
 				}
 			}
@@ -28,7 +32,7 @@ public class GetIDCommand implements Command {
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
 		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-		System.out.println("Attempt to Execute in DM: GETID");
+		System.out.println(e.getAuthor() + "Attempt to Execute in DM: GETID");
 	}
 	
 	@Override

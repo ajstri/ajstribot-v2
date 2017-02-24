@@ -31,6 +31,10 @@ public class RoleInfoCommand implements Command {
 						r = ir;
 						break;
 					}
+					else if(ir.getName().equals(roleS)) {
+						r = ir;
+						break;
+					}
 				}
 				if(r!=null) {
 					int usercount = 0;
@@ -46,16 +50,17 @@ public class RoleInfoCommand implements Command {
 							+ "**Position: **"+r.getPosition()+"\n"
 							+ "**ColorValues **"+"[Red:"+c.getRed()+", Green:"+c.getGreen()+", Blue:"+c.getBlue()+"]"
 							+ "").queue();
-					System.out.println("Executed in Guild: ROLEINFO");
+					System.out.println(e.getAuthor() + "Executed in Guild: ROLEINFO");
 				} else 
 				{
 					e.getChannel().sendMessage("Sorry... Didnt find the Requested Role!").queue();
-					System.out.println("Attempted to Execute in Guild: ROLEINFO");
+					System.out.println(e.getAuthor() + "Attempted to Execute in Guild: ROLEINFO");
 					return;
 				}
 			}
 		} else {
 			e.getChannel().sendMessage("Invalid Command!").queue();
+			System.out.println(e.getAuthor() + "Executed in Guild: ROLEINFO");
 			return;
 		}
 	}
@@ -63,7 +68,7 @@ public class RoleInfoCommand implements Command {
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
 		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-		System.out.println("Attempted to Execute in DM: ROLEINFO");
+		System.out.println(e.getAuthor() + "Attempted to Execute in DM: ROLEINFO");
 	}
 	
 	@Override

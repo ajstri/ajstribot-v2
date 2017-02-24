@@ -23,7 +23,7 @@ public class HelpCommand implements Command {
 					sb.append("*"+c.getName()+"*\n");
 				}
 				e.getChannel().sendMessage("**Help: **Categorys\n"+sb.toString()).queue();
-				System.out.println("Executed in Guild: HELP");
+				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
 			}
 			if(args.length>=2) {
 				String cat = args[1];
@@ -32,10 +32,10 @@ public class HelpCommand implements Command {
 				Collections.sort(keySet);
 				for(int i = 0; i<keySet.size(); i++) {
 					Command cmd = Main.cmds.get(keySet.get(i));
-					if(cmd.category().getName().equalsIgnoreCase(cat)) sb.append("*"+Data.cmdPrefix+keySet.get(i)+"* | "+cmd.getInfo()+"\n");
+					if(cmd.category().getName().equalsIgnoreCase(cat)) sb.append("*"+Data.cmdPrefix+keySet.get(i)+"* || "+cmd.getInfo()+"\n");
 				}
 				e.getChannel().sendMessage("**Help: **Category: "+cat+"\n"+sb.toString()).queue();
-				System.out.println("Executed in Guild: HELP");
+				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
 			}
 		}
 	}
@@ -49,7 +49,7 @@ public class HelpCommand implements Command {
 					sb.append("*"+c.getName()+"*\n");
 				}
 				UserUtils.sendPrivateMessage2(e, "**Help: **Categorys\n"+sb.toString());
-				System.out.println("Executed in DM: HELP");
+				System.out.println(e.getAuthor() + "Executed in DM: HELP");
 			}
 			if(args.length>=2) {
 				String cat = args[1];
@@ -58,10 +58,10 @@ public class HelpCommand implements Command {
 				Collections.sort(keySet);
 				for(int i = 0; i<keySet.size(); i++) {
 					Command cmd = Main.cmds.get(keySet.get(i));
-					if(cmd.category().getName().equalsIgnoreCase(cat)) sb.append("*"+Data.cmdPrefix+keySet.get(i)+"* | "+cmd.getInfo()+"\n");
+					if(cmd.category().getName().equalsIgnoreCase(cat)) sb.append("*"+Data.cmdPrefix+keySet.get(i)+"* || "+cmd.getInfo()+"\n");
 				}
 				UserUtils.sendPrivateMessage2(e, "**Help: **Category: "+cat+"\n"+sb.toString());
-				System.out.println("Executed in DM: HELP");
+				System.out.println(e.getAuthor() + "Executed in DM: HELP");
 			}
 		}
 	}

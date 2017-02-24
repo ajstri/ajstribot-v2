@@ -12,13 +12,13 @@ public class BanHammerCommand implements Command {
 	@Override
 	public void execute(GuildMessageReceivedEvent e, String[] args) {
 		e.getChannel().sendMessage("I can drop the BAN HAMMER on you!").queue();
-		System.out.println("Executed in Guild: BAN");
+		System.out.println(e.getAuthor() + "Executed in Guild: BAN");
 	}
 	
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
 		UserUtils.sendPrivateMessage2(e, "I can drop the BAN HAMMER on you!");
-		System.out.println("Executed in DM: BAN");
+		System.out.println(e.getAuthor() + "Executed in DM: BAN");
 	}
 	
 	@Override

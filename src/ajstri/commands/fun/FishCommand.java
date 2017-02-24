@@ -12,13 +12,13 @@ public class FishCommand implements Command {
 	@Override
 	public void execute(GuildMessageReceivedEvent e, String[] args) {
 		e.getChannel().sendMessage("Fish, fish! Everyone gets a fish! :fish:").queue();
-		System.out.println("Executed in Guild: FISH");
+		System.out.println(e.getAuthor() + "Executed in Guild: FISH");
 	}
 	
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
 		UserUtils.sendPrivateMessage2(e, "Fish, fish! Everyone gets a fish! :fish:");
-		System.out.println("Executed in DM: FISH");
+		System.out.println(e.getAuthor() + "Executed in DM: FISH");
 	}
 
 	@Override

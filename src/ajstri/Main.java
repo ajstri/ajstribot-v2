@@ -1,6 +1,5 @@
 package ajstri;
 
-import java.io.File;
 import java.util.HashMap;
 
 import ajstri.commands.Command;
@@ -56,6 +55,7 @@ public class Main {
 		cmds.put("getid", new GetIDCommand());
 		cmds.put("guildinfo", new GuildInfoCommand());
 		cmds.put("userinfo", new UserInfoCommand());
+		cmds.put("roleinfo", new RoleInfoCommand());
 		cmds.put("fish", new FishCommand());
 		cmds.put("banhammer", new BanHammerCommand());
 		cmds.put("join", new JoinVoiceCommand());
