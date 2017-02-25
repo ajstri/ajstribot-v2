@@ -8,7 +8,6 @@ import ajstri.Category;
 import ajstri.Data;
 import ajstri.Main;
 import ajstri.Permission;
-import ajstri.UserUtils;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -21,11 +20,13 @@ public class HelpCommand implements Command {
 		if(args != null) {
 			EmbedBuilder em = new EmbedBuilder();
 			em.setColor(Color.RED);
-			em.addField("**Help: Categories**", "", true);
 			if(args.length == 1) {
+				StringBuilder sb = new StringBuilder();
 				for(Category c : Category.values()) {
-					em.addField("*" + c.getName() + "*\n", "", true);
+					sb.append(c.getName()+"\n");
+					//em.addField("*" + c.getName() + "*\n", "", true);
 				}
+				em.addField("**Help: Categorys**", sb.toString(), true);
 				e.getChannel().sendMessage(em.build()).queue();
 				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
 			}
@@ -34,6 +35,7 @@ public class HelpCommand implements Command {
 				ArrayList<String> keySet = new ArrayList<String>();
 				for(String ck : Main.cmds.keySet()) keySet.add(ck);
 				Collections.sort(keySet);
+				StringBuilder sb = new StringBuilder();
 				for(int i = 0; i < keySet.size(); i++) {
 					Command cmd = Main.cmds.get(keySet.get(i));
 					if(cmd.category()==null) {
@@ -44,10 +46,12 @@ public class HelpCommand implements Command {
 							System.out.println("The Info for "+keySet.get(i)+" is null!");
 						} 
 						else {
-							em.addField(Data.cmdPrefix + keySet.get(i) + "\n", cmd.getInfo() + "\n", true);
+							sb.append("*"+Data.cmdPrefix+keySet.get(i)+"* || "+cmd.getInfo()+"\n");
+							//em.addField(Data.cmdPrefix + keySet.get(i) + "\n", cmd.getInfo() + "\n", true);
 						}
 					}
 				}
+				em.addField("**Help: "+cat+"**", sb.toString(), true);
 				e.getChannel().sendMessage(em.build()).queue();
 				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
 			}
