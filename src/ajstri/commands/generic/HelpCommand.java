@@ -1,5 +1,6 @@
 package ajstri.commands.generic;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -9,6 +10,7 @@ import ajstri.Main;
 import ajstri.Permission;
 import ajstri.UserUtils;
 import ajstri.commands.Command;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 
@@ -17,12 +19,14 @@ public class HelpCommand implements Command {
 	@Override
 	public void execute(GuildMessageReceivedEvent e, String[] args) {
 		if(args != null) {
-			StringBuilder sb = new StringBuilder();
+			EmbedBuilder em = new EmbedBuilder();
+			em.setColor(Color.RED);
+			em.addField("**Help: Categories**", "", true);
 			if(args.length == 1) {
 				for(Category c : Category.values()) {
-					sb.append("*" + c.getName() + "*\n");
+					em.addField("", "*" + c.getName() + "*\n", true);
 				}
-				e.getChannel().sendMessage("**Help: **Categorys\n"+sb.toString()).queue();
+				e.getChannel().sendMessage(em.build()).queue();
 				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
 			}
 			if(args.length >= 2) {
@@ -34,13 +38,17 @@ public class HelpCommand implements Command {
 					Command cmd = Main.cmds.get(keySet.get(i));
 					if(cmd.category()==null) {
 						System.out.println("The Category for "+keySet.get(i)+" is null!");
-					} else if(cmd.category().getName().equalsIgnoreCase(cat)) {
+					} 
+					else if(cmd.category().getName().equalsIgnoreCase(cat)) {
 						if(cmd.getInfo()==null) {
 							System.out.println("The Info for "+keySet.get(i)+" is null!");
-						} else sb.append("*" + Data.cmdPrefix + keySet.get(i) + "* || " + cmd.getInfo()+"\n");
+						} 
+						else {
+							em.addField(Data.cmdPrefix + keySet.get(i),cmd.getInfo() + "\n", true);
+						}
 					}
 				}
-				e.getChannel().sendMessage("**Help: **Category: " + cat + "\n" + sb.toString()).queue();
+				e.getChannel().sendMessage(em.build()).queue();
 				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
 			}
 		}
@@ -49,25 +57,37 @@ public class HelpCommand implements Command {
 	@Override
 	public void execute(PrivateMessageReceivedEvent e, String[] args) {
 		if(args != null) {
-			StringBuilder sb = new StringBuilder();
+			EmbedBuilder em = new EmbedBuilder();
+			em.setColor(Color.RED);
+			em.addField("**Help: Categories**", "", true);
 			if(args.length == 1) {
 				for(Category c : Category.values()) {
-					sb.append("*" + c.getName() + "*\n");
+					em.addField("", "*" + c.getName() + "*\n", true);
 				}
-				UserUtils.sendPrivateMessage2(e, "**Help: **Categorys\n"+sb.toString());
-				System.out.println(e.getAuthor() + "Executed in DM: HELP");
+				e.getChannel().sendMessage(em.build()).queue();
+				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
 			}
-			if(args.length>=2) {
+			if(args.length >= 2) {
 				String cat = args[1];
 				ArrayList<String> keySet = new ArrayList<String>();
 				for(String ck : Main.cmds.keySet()) keySet.add(ck);
 				Collections.sort(keySet);
-				for(int i = 0; i<keySet.size(); i++) {
+				for(int i = 0; i < keySet.size(); i++) {
 					Command cmd = Main.cmds.get(keySet.get(i));
-					if(cmd.category().getName().equalsIgnoreCase(cat)) sb.append("*" + Data.cmdPrefix + keySet.get(i) + "* || " + cmd.getInfo()+ "\n");
+					if(cmd.category()==null) {
+						System.out.println("The Category for "+keySet.get(i)+" is null!");
+					} 
+					else if(cmd.category().getName().equalsIgnoreCase(cat)) {
+						if(cmd.getInfo()==null) {
+							System.out.println("The Info for "+keySet.get(i)+" is null!");
+						} 
+						else {
+							em.addField(Data.cmdPrefix + keySet.get(i),cmd.getInfo() + "\n", true);
+						}
+					}
 				}
-				UserUtils.sendPrivateMessage2(e, "**Help: **Category: " + cat + "\n" + sb.toString());
-				System.out.println(e.getAuthor() + "Executed in DM: HELP");
+				e.getChannel().sendMessage(em.build()).queue();
+				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
 			}
 		}
 	}

@@ -3,7 +3,6 @@ package ajstri;
 public enum Category {
 	Generic("generic"),
 	Admin("admin"),
-	Custom("custom"),
 	Fun("fun"),
 	Music("music");
 	
