@@ -1,11 +1,13 @@
 package ajstri.commands.admin;
 
+import java.awt.Color;
 import java.time.format.DateTimeFormatter;
 
 import ajstri.commands.Command;
 import ajstri.Category;
 import ajstri.Permission;
 import ajstri.UserUtils;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
@@ -17,6 +19,8 @@ public class UserInfoCommand implements Command {
     @Override
     public void execute(GuildMessageReceivedEvent e, String[] args) {
         if(args.length > 1) {
+        	EmbedBuilder em = new EmbedBuilder();
+        	em.setColor(Color.RED);
             Member m = null;
             for(Member mi : e.getGuild().getMembers()) {
                 if(mi.getEffectiveName().equals(args[1].replace("@", ""))) {
@@ -41,15 +45,15 @@ public class UserInfoCommand implements Command {
                 roles = "<no Roles>";
             } else 
                 roles = roles.substring(0, roles.length()-2);
-            e.getChannel().sendMessage(""
-                    + "**Name:** "+m.getEffectiveName()+"\n"
-                    + "**Created:** "+m.getUser().getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
+            em.addField("**Name:** "+m.getEffectiveName()+"\n",
+                    "**Created:** "+m.getUser().getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
                     + "**Roles:** "+roles+"\n"
                     + "**isOwner:** "+m.isOwner()+"\n"
                     + "**isBot:** "+m.getUser().isBot()+"\n"
                     + "**OnlineStatus:** "+(m.getOnlineStatus()==OnlineStatus.INVISIBLE?"OFFLINE":m.getOnlineStatus().toString())+"\n"
                     + "**Avatar:** "+m.getUser().getAvatarUrl()
-                    + "").queue();
+                    + "", true);
+            e.getChannel().sendMessage(em.build()).queue();
             System.out.println(e.getAuthor() + "Executed in Guild: USERINFO");
         }
     }

@@ -65,5 +65,6 @@ public class Main {
 		cmds.put("adtes", new AdminTestCommand());
 		cmds.put("ban", new BanCommand());
 		cmds.put("welcome", new WelcomeCommand());
+		cmds.put("cry", new CryCommand());
 	}
 }

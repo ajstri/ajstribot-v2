@@ -24,7 +24,7 @@ public class HelpCommand implements Command {
 			em.addField("**Help: Categories**", "", true);
 			if(args.length == 1) {
 				for(Category c : Category.values()) {
-					em.addField("", "*" + c.getName() + "*\n", true);
+					em.addField("*" + c.getName() + "*\n", "", true);
 				}
 				e.getChannel().sendMessage(em.build()).queue();
 				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
@@ -44,7 +44,7 @@ public class HelpCommand implements Command {
 							System.out.println("The Info for "+keySet.get(i)+" is null!");
 						} 
 						else {
-							em.addField(Data.cmdPrefix + keySet.get(i),cmd.getInfo() + "\n", true);
+							em.addField(Data.cmdPrefix + keySet.get(i) + "\n", cmd.getInfo() + "\n", true);
 						}
 					}
 				}
@@ -62,7 +62,7 @@ public class HelpCommand implements Command {
 			em.addField("**Help: Categories**", "", true);
 			if(args.length == 1) {
 				for(Category c : Category.values()) {
-					em.addField("", "*" + c.getName() + "*\n", true);
+					em.addField("*" + c.getName() + "*\n", "This is a weird test", true);
 				}
 				e.getChannel().sendMessage(em.build()).queue();
 				System.out.println(e.getAuthor() + "Executed in Guild: HELP");
@@ -74,12 +74,12 @@ public class HelpCommand implements Command {
 				Collections.sort(keySet);
 				for(int i = 0; i < keySet.size(); i++) {
 					Command cmd = Main.cmds.get(keySet.get(i));
-					if(cmd.category()==null) {
-						System.out.println("The Category for "+keySet.get(i)+" is null!");
+					if(cmd.category() == null) {
+						System.out.println("The Category for " + keySet.get(i) + " is null!");
 					} 
 					else if(cmd.category().getName().equalsIgnoreCase(cat)) {
-						if(cmd.getInfo()==null) {
-							System.out.println("The Info for "+keySet.get(i)+" is null!");
+						if(cmd.getInfo() == null) {
+							System.out.println("The Info for " + keySet.get(i) + " is null!");
 						} 
 						else {
 							em.addField(Data.cmdPrefix + keySet.get(i),cmd.getInfo() + "\n", true);

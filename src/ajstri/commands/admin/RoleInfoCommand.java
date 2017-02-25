@@ -8,6 +8,7 @@ import ajstri.Category;
 import ajstri.Permission;
 import ajstri.UserUtils;
 import ajstri.commands.Command;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -18,6 +19,8 @@ public class RoleInfoCommand implements Command {
 	@Override
 	public void execute(GuildMessageReceivedEvent e, String[] args) {
 		if(args!=null) {
+			EmbedBuilder em = new EmbedBuilder();
+			em.setColor(Color.RED);
 			if(args.length>=2) {
 				Role r = null;
 				String roleS = "";
@@ -40,16 +43,16 @@ public class RoleInfoCommand implements Command {
 					int usercount = 0;
 					for(Member im : e.getGuild().getMembers()) {
 						if(im.getRoles().contains(r)) {
-							usercount = usercount+1;
+							usercount = usercount + 1;
 						}
 					}
 					Color c = r.getColor();
-					e.getChannel().sendMessage(""
-							+ "**Name: **"+r.getName()+"\n"
-							+ "**User(s) with Role: **"+usercount+"\n"
+					em.addField("**Name: **"+r.getName()+"\n",
+							"" + "**User(s) with Role: **"+usercount+"\n"
 							+ "**Position: **"+r.getPosition()+"\n"
 							+ "**ColorValues **"+"[Red:"+c.getRed()+", Green:"+c.getGreen()+", Blue:"+c.getBlue()+"]"
-							+ "").queue();
+							+ "", true);
+					e.getChannel().sendMessage(em.build()).queue();
 					System.out.println(e.getAuthor() + "Executed in Guild: ROLEINFO");
 				} else 
 				{
