@@ -21,13 +21,14 @@ public class RoleInfoCommand extends Command {
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(args.length>=2) {
 			String roleNameRaw = Arrays.stream(args).collect(Collectors.joining(" ")).replace(args[0]+" ", "");
+			roleNameRaw = roleNameRaw.replaceFirst("@", "");
 			Role role = e.getGuild().getRolesByName(roleNameRaw, false).get(0);
 			if(role==null) {
 				e.sendMessage("The reqested role could not be found!");
 				return;
 			}
 			EmbedBuilder eb = new EmbedBuilder();
-			eb.setColor(Color.RED);
+			eb.setColor(null);
 			eb.addField(role.getName(), 
 					"**"+(e.getGuild().getMembersWithRoles(role).size()==1?"User":"Users")+"with Role:** "+e.getGuild().getMembersWithRoles(role).size()+"\n"
 					+ "**Position:** "+role.getPosition()+"\n"

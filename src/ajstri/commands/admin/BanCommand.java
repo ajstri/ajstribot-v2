@@ -18,7 +18,7 @@ public class BanCommand extends Command {
 		if(e.isGuildMessage()) {
 			if(args.length == 2) {
 				Guild g = e.getGuild();
-				Member m = e.getGuild().getMembersByName(args[1], false).get(0);
+				Member m = e.getGuild().getMembersByName(args[1].replace("@", ""), false).get(0);
 				if(m == null) {
 					e.sendMessage("Cannot find requested Member.");
 					return;
