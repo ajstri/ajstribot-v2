@@ -36,7 +36,7 @@ public class HelpCommand extends Command {
 				for(String[] ckey : DDBLCore.getDDBLInstance().getCommandMap().keySet()) {
 					if(DDBLCore.getDDBLInstance().getCommandMap().get(ckey) instanceof ajstri.commands.Command) {
 						Command cmd = (Command)DDBLCore.getDDBLInstance().getCommandMap().get(ckey);
-						if(cmd.setCategory()==null||cmd.setCommandInfo()==null) DDBLCore.getDDBLInstance().getLogger().warning(cmd.getNames()[0]+" has a null value!");
+						if(cmd.setCategory()==null||cmd.setCommandInfo()==null) System.out.println(cmd.getNames()[0]+" has a null value!");
 						else if(cmd.setCategory().getName().equalsIgnoreCase(args[1])) eb.addField(cmd.getNames()[0], cmd.setCommandInfo(), true);
 					}
 				}
