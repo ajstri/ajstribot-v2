@@ -2,7 +2,6 @@ package ajstri.commands.generic;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import ajstri.Category;
@@ -23,10 +22,10 @@ public class HelpCommand extends Command {
 		eb.setColor(Color.RED);
 		if(args.length==1) {
 			StringBuilder sb = new StringBuilder();
-			ArrayList<Category> cats = (ArrayList<Category>)Arrays.asList(Category.values());
+			ArrayList<String> cats = Category.getNames();
 			Collections.sort(cats);
 			for(int i = 0; i<cats.size(); i++) {
-				sb.append("*"+cats.get(i).getName()+"*\n");
+				sb.append("*"+cats.get(i)+"*\n");
 			}
 			eb.addField("Help: Categorys", sb.toString(), true);
 			e.sendMessage(eb.build());
