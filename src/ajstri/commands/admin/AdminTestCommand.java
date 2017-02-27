@@ -25,5 +25,4 @@ public class AdminTestCommand extends Command {
 	public Category setCategory() {
 		return Category.Admin;
 	}
-
 }

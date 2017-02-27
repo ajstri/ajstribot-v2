@@ -7,7 +7,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class FishCommand extends Command {
 
 	public FishCommand() {
-		super(new String[]{"fish"}, EVERYONE, false);
+		super(new String[]{"fish"}, "ajstri.fish", false);
 	}
 
 	@Override

@@ -20,5 +20,4 @@ public abstract class Command extends ICommand {
 	
 	public abstract String setCommandInfo();
 	public abstract Category setCategory();
-	
 }

@@ -23,5 +23,4 @@ public enum Category {
 		for(Category c : Category.values()) arr.add(c.getName());
 		return arr;
 	}
-	
 }

@@ -16,16 +16,17 @@ public class BanCommand extends Command {
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.isGuildMessage()) {
-			if(args.length==2) {
+			if(args.length == 2) {
 				Guild g = e.getGuild();
 				Member m = e.getGuild().getMembersByName(args[1], false).get(0);
-				if(m==null) {
+				if(m == null) {
 					e.sendMessage("Cannot find requested Member.");
 					return;
 				}
-				g.getController().kick(m).queue(success -> e.sendMessage("Kicked "+m.getEffectiveName()+"! Cya!"));
+				g.getController().ban(m, 0).queue(success -> e.sendMessage("Kicked "+m.getEffectiveName()+"! Cya!"));
 			}
-		} else {
+		} 
+		else {
 			e.sendMessage("B-b-b-b-but... this isn't a *guild*!");
 		}
 	}
@@ -39,5 +40,4 @@ public class BanCommand extends Command {
 	public Category setCategory() {
 		return Category.Admin;
 	}
-	
 }
