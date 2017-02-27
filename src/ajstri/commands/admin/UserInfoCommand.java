@@ -26,7 +26,7 @@ public class UserInfoCommand extends Command {
 			if(args.length==1) {
 				Member m = e.getMember();
 				User u = m.getUser();
-	            eb.addField("Name: "+u.getName()+"\n",
+	            eb.addField(u.getName()+"\n",
 	                    "**Created:** "+u.getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
 	                    + "**Role Count:** "+m.getRoles().size()+"\n"
 	                    + "**isOwner:** "+m.isOwner()+"\n"
@@ -44,7 +44,7 @@ public class UserInfoCommand extends Command {
 					return;
 				}
 				User u = m.getUser();
-	            eb.addField("Name: "+u.getName()+"\n",
+	            eb.addField(u.getName()+"\n",
 	                    "**Created:** "+u.getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
 	                    + "**Role Count:** "+m.getRoles().size()+"\n"
 	                    + "**isOwner:** "+m.isOwner()+"\n"
@@ -59,7 +59,7 @@ public class UserInfoCommand extends Command {
 			EmbedBuilder eb = new EmbedBuilder();
 			eb.setColor(Color.RED);
 			User u = e.getAuthor();
-            eb.addField("Name: "+u.getName()+"\n",
+            eb.addField(u.getName()+"\n",
                     "**Created:** "+u.getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
                     + "**isBot:** "+u.isBot()+"\n"
                     + "**OnlineStatus:** "+(u.getJDA().getPresence().getStatus()==OnlineStatus.INVISIBLE?"OFFLINE":u.getJDA().getPresence().getStatus().toString())+"\n"

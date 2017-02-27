@@ -21,12 +21,12 @@ public class GuildInfoCommand extends Command {
 		Guild g = e.getGuild();
 		EmbedBuilder eb = new EmbedBuilder();
 		eb.setColor(Color.RED);
-		eb.addField("Name: "+g.getName(), 
+		eb.addField(g.getName(), 
 				"**Created:** "+g.getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
 				+ "**User Count:** "+g.getMembers().size()+"\n"
-				+ "**Role Count:**"+g.getRoles().size()+"\n"
-				+ "**Text Channel Count:**"+g.getTextChannels().size()+"\n"
-				+ "**Voice Channel Count:**"+g.getVoiceChannels().size()+"\n"
+				+ "**Role Count:** "+g.getRoles().size()+"\n"
+				+ "**Text Channel Count:** "+g.getTextChannels().size()+"\n"
+				+ "**Voice Channel Count:** "+g.getVoiceChannels().size()+"\n"
 				+ "**Server Image:**", true);
 		eb.setImage(g.getIconUrl());
 		e.sendMessage(eb.build());
