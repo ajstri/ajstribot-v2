@@ -4,49 +4,42 @@ import java.awt.Color;
 import java.time.format.DateTimeFormatter;
 
 import ajstri.Category;
-import ajstri.Permission;
-import ajstri.UserUtils;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
+import net.dv8tion.jda.core.Permission;
+import net.dv8tion.jda.core.entities.Guild;
+import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class GuildInfoCommand implements Command {
+public class GuildInfoCommand extends Command {
 
-	@Override
-	public void execute(GuildMessageReceivedEvent e, String[] args) {
-		EmbedBuilder em = new EmbedBuilder();
-		em.setColor(Color.RED);
-		em.addField("**Name:** " + e.getGuild().getName() +  "\n",
-                "**Created:** " + e.getGuild().getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "\n"
-                + "**User Count:** "+ e.getGuild().getMembers().size() + "\n"
-                + "**Role Count:** " + e.getGuild().getRoles().size() + "\n"
-                + "**Text Channel Count:** " + e.getGuild().getTextChannels().size() + "\n"
-                + "**Voice Channel Count:** " + e.getGuild().getVoiceChannels().size() + "\n"
-                + "**Server Image:** " + e.getGuild().getIconUrl()
-                + "", true);
-		e.getChannel().sendMessage(em.build()).queue();
-		System.out.println(e.getAuthor() + "Executed in Guild: GUILDINFO");
-
-	}
-	
-	@Override
-	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-		System.out.println(e.getAuthor() + "Attempt to Execute in DM: GUILDINFO");
-	}
-	@Override
-	public Permission getValidExecutors() {
-		return Permission.Admins;
+	public GuildInfoCommand() {
+		super(new String[]{"guildinfo"}, Permission.ADMINISTRATOR, true);
 	}
 
 	@Override
-	public String getInfo() {
+	public void execute(ExtendedMessageReceivedEvent e) {
+		Guild g = e.getGuild();
+		EmbedBuilder eb = new EmbedBuilder();
+		eb.setColor(Color.RED);
+		eb.addField("Name: "+g.getName(), 
+				"**Created:** "+g.getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
+				+ "**User Count:** "+g.getMembers().size()+"\n"
+				+ "**Role Count:**"+g.getRoles().size()+"\n"
+				+ "**Text Channel Count:**"+g.getTextChannels().size()+"\n"
+				+ "**Voice Channel Count:**"+g.getVoiceChannels().size()+"\n"
+				+ "**Server Image:**", true);
+		eb.setImage(g.getIconUrl());
+		e.sendMessage(eb.build());
+	}
+
+	@Override
+	public String setCommandInfo() {
 		return "Some Guild information...";
 	}
 
 	@Override
-	public Category category() {
+	public Category setCategory() {
 		return Category.Admin;
 	}
+	
 }

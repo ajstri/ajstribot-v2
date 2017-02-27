@@ -1,14 +1,24 @@
 package ajstri.commands;
 
 import ajstri.Category;
-import ajstri.Permission;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
+import net.dv8tion.jda.core.Permission;
+import quack.ddbl.core.commands.ICommand;
+import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public interface Command {
-	public void execute(GuildMessageReceivedEvent e, String[] args);
-	public void execute(PrivateMessageReceivedEvent e, String[] args);
-	public Permission getValidExecutors();
-	public String getInfo();
-	public Category category();
+public abstract class Command extends ICommand {
+
+	public Command(String[] names, String permission, boolean guildOnly) {
+		super(names, permission, guildOnly);
+	}
+	
+	public Command(String[] names, Permission permission, boolean guildOnly) {
+		super(names, permission, guildOnly);
+	}
+	
+	@Override
+	public abstract void execute(ExtendedMessageReceivedEvent e);
+	
+	public abstract String setCommandInfo();
+	public abstract Category setCategory();
+	
 }

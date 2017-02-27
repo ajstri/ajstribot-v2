@@ -5,90 +5,46 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import ajstri.Category;
-import ajstri.Permission;
-import ajstri.UserUtils;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Role;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
+import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class RoleInfoCommand implements Command {
-	
+public class RoleInfoCommand extends Command {
+
+	public RoleInfoCommand() {
+		super(new String[]{"roleinfo"}, Permission.ADMINISTRATOR, true);
+	}
+
 	@Override
-	public void execute(GuildMessageReceivedEvent e, String[] args) {
-		if(args!=null) {
-			EmbedBuilder em = new EmbedBuilder();
-			em.setColor(Color.RED);
-			if(args.length>=2) {
-				Role r = null;
-				String roleS = "";
-				if(args.length==1) {
-					roleS = args[1];
-				} else {
-					roleS = Arrays.stream(args).collect(Collectors.joining(" ")).replace(args[0]+" ", "");
-				}
-				for(Role ir : e.getGuild().getRoles()) {
-					if(ir.getName().equals(roleS.replace("@", ""))) {
-						r = ir;
-						break;
-					}
-					else if(ir.getName().equals(roleS)) {
-						r = ir;
-						break;
-					}
-				}
-				if(r!=null) {
-					int usercount = 0;
-					for(Member im : e.getGuild().getMembers()) {
-						if(im.getRoles().contains(r)) {
-							usercount = usercount + 1;
-						}
-					}
-					Color c = r.getColor();
-					em.addField("**Name: **"+r.getName()+"\n",
-							"" + "**User(s) with Role: **"+usercount+"\n"
-							+ "**Position: **"+r.getPosition()+"\n"
-							+ "**ColorValues **"+"[Red:"+c.getRed()+", Green:"+c.getGreen()+", Blue:"+c.getBlue()+"]"
-							+ "", true);
-					e.getChannel().sendMessage(em.build()).queue();
-					System.out.println(e.getAuthor() + "Executed in Guild: ROLEINFO");
-				} else 
-				{
-					e.getChannel().sendMessage("Sorry... Didnt find the Requested Role!").queue();
-					System.out.println(e.getAuthor() + "Attempted to Execute in Guild: ROLEINFO");
-					return;
-				}
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(args.length>=2) {
+			String roleNameRaw = Arrays.stream(args).collect(Collectors.joining(" ")).replace(args[0]+" ", "");
+			Role role = e.getGuild().getRolesByName(roleNameRaw, false).get(0);
+			if(role==null) {
+				e.sendMessage("The reqested role could not be found!");
+				return;
 			}
-		} else {
-			e.getChannel().sendMessage("Invalid Command!").queue();
-			System.out.println(e.getAuthor() + "Executed in Guild: ROLEINFO");
-			return;
+			EmbedBuilder eb = new EmbedBuilder();
+			eb.setColor(Color.RED);
+			eb.addField("Name: "+role.getName(), 
+					"**"+(e.getGuild().getMembersWithRoles(role).size()==1?"User":"Users")+"with Role:** "+e.getGuild().getMembersWithRoles(role).size()+"\n"
+					+ "**Position:** "+role.getPosition()+"\n"
+					+ "**Mentionable:** "+role.isMentionable()+"\n"
+					+ "**Color Values** [R:"+role.getColor().getRed()+", G:"+role.getColor().getGreen()+", B:"+role.getColor().getBlue()+"]", true);
+			e.sendMessage(eb.build());
 		}
 	}
-	
-	@Override
-	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-		System.out.println(e.getAuthor() + "Attempted to Execute in DM: ROLEINFO");
-	}
-	
-	@Override
-	public Permission getValidExecutors() {
-		return Permission.Admins;
-	}
 
 	@Override
-	public String getInfo() {
+	public String setCommandInfo() {
 		return "See some information about an Role...";
 	}
 
 	@Override
-	public Category category() {
+	public Category setCategory() {
 		return Category.Admin;
 	}
-
-	
 	
 }

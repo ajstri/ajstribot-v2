@@ -2,20 +2,21 @@ package ajstri.commands.music;
 
 import ajstri.Category;
 import ajstri.Main;
-import ajstri.Permission;
-import ajstri.UserUtils;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.entities.VoiceChannel;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
+import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class JoinVoiceCommand implements Command {
+public class JoinVoiceCommand extends Command {
+
+	public JoinVoiceCommand() {
+		super(new String[]{"join"}, EVERYONE, true);
+	}
 
 	@Override
-	public void execute(GuildMessageReceivedEvent e, String[] args) {
-		if(args!=null) {
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(args.length==2) {
 		    for(VoiceChannel vc : e.getGuild().getVoiceChannels()) {
-		        if((vc.getName().substring(2)).equals(args[1])) {
+		        if(vc.getName().contentEquals(args[1])) {
 		            Main.ami = e.getGuild().getAudioManager();
 		            Main.ami.openAudioConnection(vc);
 		            e.getChannel().sendMessage("Connected To: **" + vc.getName() + "**").queue();
@@ -31,25 +32,15 @@ public class JoinVoiceCommand implements Command {
 		    }
 		}
 	}
-	
+
 	@Override
-	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-		System.out.println(e.getAuthor() + "Attempt to Execute in DM: JOIN");
+	public String setCommandInfo() {
+		return "Make me join the voice channel that you currently are in";
 	}
 
 	@Override
-	public Permission getValidExecutors() {
-		return Permission.Everyone;
-	}
-
-	@Override
-	public String getInfo() {
-		return "Join voice channel.";
-	}
-
-	@Override
-	public Category category() {
+	public Category setCategory() {
 		return Category.Music;
 	}
+	
 }

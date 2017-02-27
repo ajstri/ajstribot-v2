@@ -1,38 +1,35 @@
 package ajstri.commands.admin;
 
 import ajstri.Category;
-import ajstri.Permission;
-import ajstri.UserUtils;
 import ajstri.commands.Command;
-import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
+import net.dv8tion.jda.core.Permission;
+import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.message.MessageUtils;
 
-public class EmbedCommand implements Command {
+public class EmbedCommand extends Command {
 
-	public void execute(GuildMessageReceivedEvent e, String[] args) {
-		User m = e.getAuthor();
-		e.getChannel().sendMessage(m.getAsMention() + ": What do you want?").queue();
-		UserUtils.sendPrivateMessage(e, "Hi, I like you");
-	}
-	
-	@Override
-	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		UserUtils.sendPrivateMessage2(e, "Hi, I like you");
+	public EmbedCommand() {
+		super(new String[]{"em"}, Permission.ADMINISTRATOR, false);
 	}
 
 	@Override
-	public Permission getValidExecutors() {
-		return Permission.Admins;
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.isGuildMessage()) {
+			e.sendMessage(e.getAuthor().getAsMention()+": What do you want?");
+			MessageUtils.sendPrivateMessage(e.getAuthor(), "Hi, I like you");
+		} else {
+			e.sendMessage("Hi, I like you");
+		}
 	}
 
 	@Override
-	public String getInfo() {
-		return "Test Command";
-	}
-
-	@Override
-	public Category category() {
+	public Category setCategory() {
 		return Category.Admin;
 	}
+
+	@Override
+	public String setCommandInfo() {
+		return "Test Command";
+	}
+	
 }

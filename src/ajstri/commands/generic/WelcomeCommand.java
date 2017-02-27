@@ -1,51 +1,35 @@
 package ajstri.commands.generic;
 
 import ajstri.Category;
-import ajstri.Permission;
-import ajstri.UserUtils;
 import ajstri.commands.Command;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
+import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.message.MessageUtils;
 
-public class WelcomeCommand implements Command {
+public class WelcomeCommand extends Command {
 
-	@Override
-	public void execute(GuildMessageReceivedEvent e, String[] args) {
-		e.getChannel().sendMessage(e.getAuthor().getAsMention() + ", I sent you a DM.").queue();
-		UserUtils.sendPrivateMessage(e, "Hi! I am AJStriBot. " +
-				   "Thanks for choosing me! " +
-				   "One of my Commands, `/ban`, requires I be higher in"
-				   + "the heirarchy than the member to be kicked. Keep this in mind! " +
-				   "Admin commands are sorted by default. If you have Administrative privilages, "
-				   + "you can use them in a guild! \n" +
-				   "Type `/help` to begin...");
-		System.out.println(e.getAuthor() + "Executed in Guild: WELCOME");
+	public WelcomeCommand() {
+		super(new String[]{"welcome"}, EVERYONE, false);
 	}
 
 	@Override
-	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		UserUtils.sendPrivateMessage2(e, "Hi! I am AJStriBot. " +
-				   "Thanks for choosing me! " +
-				   "One of my Commands, `/ban`, requires I be higher in"
-				   + "the heirarchy than the member to be kicked. Keep this in mind! " +
-				   "Admin commands are sorted by default. If you have Administrative privilages, "
-				   + "you can use them in a guild! \n" +
-				   "Type `/help` to begin...");
-		System.out.println(e.getAuthor() + "Executed in DM: WELCOME");
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.isGuildMessage()) MessageUtils.sendPrivateMessage(e.getAuthor(), 
+				"Hi! I am AJStriBot. " +
+				"Thanks for choosing me! " +
+				"One of my Commands, `/ban`, requires me to be higher in " +
+				"the heirarchy than the member to be kicked. Keep this in mind! " +
+				"Admin commands are sorted by default. If you have Administrative privilages, " +
+				"you can use them in a guild! \n" +
+				"Type `/help` to begin...");
 	}
 
 	@Override
-	public Permission getValidExecutors() {
-		return Permission.Everyone;
-	}
-
-	@Override
-	public String getInfo() {
+	public String setCommandInfo() {
 		return "Welcome, let's get started!";
 	}
 
 	@Override
-	public Category category() {
+	public Category setCategory() {
 		return Category.Generic;
 	}
 

@@ -1,35 +1,28 @@
 package ajstri.commands.admin;
 
 import ajstri.Category;
-import ajstri.Permission;
 import ajstri.commands.Command;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
+import net.dv8tion.jda.core.Permission;
+import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class AdminTestCommand implements Command {
+public class AdminTestCommand extends Command {
+
+	public AdminTestCommand() {
+		super(new String[]{"adtest"}, Permission.ADMINISTRATOR, true);
+	}
 
 	@Override
-	public void execute(GuildMessageReceivedEvent e, String[] args) {
+	public void execute(ExtendedMessageReceivedEvent e) {
 		System.out.println(e.getMember().getPermissions());
 	}
 
 	@Override
-	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		
-	}
-
-	@Override
-	public Permission getValidExecutors() {
-		return Permission.Admins;
-	}
-
-	@Override
-	public String getInfo() {
+	public String setCommandInfo() {
 		return "Yes";
 	}
-
+	
 	@Override
-	public Category category() {
+	public Category setCategory() {
 		return Category.Admin;
 	}
 

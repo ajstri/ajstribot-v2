@@ -1,5 +1,7 @@
 package ajstri;
 
+import java.util.ArrayList;
+
 public enum Category {
 	Generic("generic"),
 	Admin("admin"),
@@ -15,4 +17,11 @@ public enum Category {
 	public String getName() {
 		return s;
 	}
+	
+	public static ArrayList<String> getNames() {
+		ArrayList<String> arr = new ArrayList<String>();
+		for(Category c : Category.values()) arr.add(c.getName());
+		return arr;
+	}
+	
 }

@@ -1,41 +1,28 @@
 package ajstri.commands.fun;
 
 import ajstri.Category;
-import ajstri.Permission;
-import ajstri.UserUtils;
 import ajstri.commands.Command;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
+import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class GiggleCommand implements Command {
+public class GiggleCommand extends Command {
 
-	@Override
-	public void execute(GuildMessageReceivedEvent e, String[] args) {
-		e.getChannel().sendMessage("*giggles*").queue();
-		System.out.println(e.getAuthor() + "Executed in Guild: GIGGLE");
-	}
-	
-	@Override
-	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-		System.out.println(e.getAuthor() + "Executed in DM: GIGGLE");
-	}
-	
-	@Override
-	public Permission getValidExecutors() {
-		return Permission.Everyone;
+	public GiggleCommand() {
+		super(new String[]{"giggle"}, EVERYONE, false);
 	}
 
 	@Override
-	public String getInfo() {
+	public void execute(ExtendedMessageReceivedEvent e) {
+		e.sendMessage("*giggles*");
+	}
+
+	@Override
+	public String setCommandInfo() {
 		return "Giggles!";
 	}
 
 	@Override
-	public Category category() {
+	public Category setCategory() {
 		return Category.Fun;
 	}
-
-	
 
 }

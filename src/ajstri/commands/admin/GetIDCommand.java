@@ -1,54 +1,41 @@
 package ajstri.commands.admin;
 
 import ajstri.Category;
-import ajstri.Permission;
-import ajstri.UserUtils;
 import ajstri.commands.Command;
-import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
+import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class GetIDCommand implements Command {
+public class GetIDCommand extends Command {
+
+	public GetIDCommand() {
+		super(new String[]{"getid"}, Permission.ADMINISTRATOR, false);
+	}
 
 	@Override
-	public void execute(GuildMessageReceivedEvent e, String[] args) {
-		if(args != null) {
-			Guild g = e.getGuild();
-			for(Member m : g.getMembers()) {
-				if(m.getEffectiveName().equals(args[1].replace("@", ""))) {
-					e.getChannel().sendMessage("UserID: " + m.getUser().getId()).queue();
-					System.out.println(e.getAuthor() + "Executed in Guild: GETID");
-					break;
-				} else if(m.getEffectiveName().equals(args[1])) {
-					e.getChannel().sendMessage("UserID: " + m.getUser().getId()).queue();
-					System.out.println(e.getAuthor() + "Executed in Guild: GETID");
-					break;
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.isGuildMessage()) {
+			if(args.length==2) {
+				Member m = e.getGuild().getMembersByName(args[1], false).get(0);
+				if(m==null) {
+					e.sendMessage("Cannot find requested Member.");
+					return;
 				}
+				e.sendMessage(m.getEffectiveName()+" ID: "+m.getUser().getId());
 			}
+		} else {
+			e.sendMessage("Your ID: "+e.getAuthor().getId());
 		}
 	}
-	
-	@Override
-	public void execute(PrivateMessageReceivedEvent e, String[] args) {
-		UserUtils.sendPrivateMessage2(e, "B-b-b-b-but...this isn't a *guild*!");
-		System.out.println(e.getAuthor() + "Attempt to Execute in DM: GETID");
-	}
-	
-	@Override
-	public Permission getValidExecutors() {
-		return Permission.Admins;
-	}
 
 	@Override
-	public String getInfo() {
+	public String setCommandInfo() {
 		return "Get the ID of an User.";
 	}
-
+	
 	@Override
-	public Category category() {
+	public Category setCategory() {
 		return Category.Admin;
 	}
-
 	
 }
