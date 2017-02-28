@@ -3,15 +3,13 @@ package ajstri.commands.music;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import ajstri.Category;
-import ajstri.commands.Command;
 import quack.ddbl.core.DDBLCore;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class JoinVoiceCommand extends Command {
+public class JoinVoiceCommand extends MusicCommand {
 
 	public JoinVoiceCommand() {
-		super(EVERYONE, true, "join");
+		super("join");
 	}
 
 	@Override
@@ -26,15 +24,4 @@ public class JoinVoiceCommand extends Command {
 			return;
 		}
 	}
-
-	@Override
-	public String setCommandInfo() {
-		return "Make me join the voice channel that you currently are in";
-	}
-
-	@Override
-	public Category setCategory() {
-		return Category.Music;
-	}
-	
 }

@@ -36,5 +36,9 @@ public class Main extends DDBLCore {
 		registerCommand(new JoinVoiceCommand());
 		registerCommand(new LeaveVoiceCommand());
 		registerCommand(new PlayCommand());
+		registerCommand(new QueueCommand());
+		registerCommand(new PauseCommand());
+		registerCommand(new NowPlayingCommand());
+		registerCommand(new SkipCommand());
 	}
 }
