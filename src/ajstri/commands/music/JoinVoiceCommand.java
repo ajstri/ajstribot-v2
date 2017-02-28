@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import ajstri.Category;
-import ajstri.Main;
 import ajstri.commands.Command;
-import net.dv8tion.jda.core.entities.VoiceChannel;
 import quack.ddbl.core.DDBLCore;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 

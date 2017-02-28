@@ -6,7 +6,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class PlayCommand extends MusicCommand {
 
 	public PlayCommand() {
-		super("play");
+		super("join", EVERYONE, true);
 	}
 	
 	@Override
