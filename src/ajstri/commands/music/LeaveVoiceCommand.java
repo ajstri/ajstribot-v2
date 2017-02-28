@@ -8,7 +8,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class LeaveVoiceCommand extends Command {
 
 	public LeaveVoiceCommand() {
-		super(new String[]{"leave"}, EVERYONE, true);
+		super(EVERYONE, true, "leave");
 	}
 	
 	@Override

@@ -10,7 +10,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class BanCommand extends Command {
 
 	public BanCommand() {
-		super(new String[]{"ban"}, Permission.ADMINISTRATOR, true);
+		super(Permission.ADMINISTRATOR, true, "ban");
 	}
 
 	@Override

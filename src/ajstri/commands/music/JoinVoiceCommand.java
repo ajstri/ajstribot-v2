@@ -11,7 +11,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class JoinVoiceCommand extends Command {
 
 	public JoinVoiceCommand() {
-		super(new String[]{"join"}, EVERYONE, true);
+		super(EVERYONE, true, "join");
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import quack.ddbl.core.message.MessageUtils;
 public class WelcomeCommand extends Command {
 
 	public WelcomeCommand() {
-		super(new String[]{"welcome"}, EVERYONE, false);
+		super(EVERYONE, false, "welcome");
 	}
 
 	@Override

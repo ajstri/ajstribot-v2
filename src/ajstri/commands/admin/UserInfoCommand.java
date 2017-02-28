@@ -15,7 +15,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class UserInfoCommand extends Command {
 
 	public UserInfoCommand() {
-		super(new String[]{"userinfo"}, Permission.ADMINISTRATOR, false);
+		super(Permission.ADMINISTRATOR, false, "userinfo");
 	}
 
 	@Override

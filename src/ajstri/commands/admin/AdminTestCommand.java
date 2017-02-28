@@ -8,7 +8,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class AdminTestCommand extends Command {
 
 	public AdminTestCommand() {
-		super(new String[]{"adtest"}, Permission.ADMINISTRATOR, true);
+		super(Permission.ADMINISTRATOR, true, "adtest");
 	}
 
 	@Override

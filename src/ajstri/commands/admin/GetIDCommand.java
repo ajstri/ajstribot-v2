@@ -9,7 +9,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class GetIDCommand extends Command {
 
 	public GetIDCommand() {
-		super(new String[]{"getid"}, Permission.ADMINISTRATOR, false);
+		super(Permission.ADMINISTRATOR, false, "getid");
 	}
 
 	@Override

@@ -6,13 +6,13 @@ import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
 public abstract class Command extends ICommand {
-
-	public Command(String[] names, String permission, boolean guildOnly) {
-		super(names, permission, guildOnly);
-	}
 	
-	public Command(String[] names, Permission permission, boolean guildOnly) {
-		super(names, permission, guildOnly);
+	public Command(String permission, boolean guildOnly, String... names) {
+		super(permission, guildOnly, names);
+	}
+
+	public Command(Permission permission, boolean guildOnly, String... names) {
+		super(permission, guildOnly, names);
 	}
 	
 	@Override

@@ -5,10 +5,10 @@ import quack.ddbl.core.commands.ICommand;
 public abstract class MusicCommand extends ICommand {
 
 	public MusicCommand(String name) {
-		super("ddbl.music." + name, true, name);
+		super(EVERYONE, true, name);
 	}
 
 	public MusicCommand(String... names) {
-		super("ddbl.music." + names[0], true, names);
+		super(EVERYONE, true, names);
 	}
 }

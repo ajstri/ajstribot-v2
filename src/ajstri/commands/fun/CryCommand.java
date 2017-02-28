@@ -7,7 +7,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class CryCommand extends Command {
 
 	public CryCommand() {
-		super(new String[]{"cry"}, EVERYONE, false);
+		super(EVERYONE, false, "cry");
 	}
 
 	@Override

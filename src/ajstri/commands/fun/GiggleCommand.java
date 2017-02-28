@@ -7,7 +7,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class GiggleCommand extends Command {
 
 	public GiggleCommand() {
-		super(new String[]{"giggle"}, EVERYONE, false);
+		super(EVERYONE, false, "giggle");
 	}
 
 	@Override

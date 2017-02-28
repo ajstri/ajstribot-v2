@@ -7,7 +7,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class BanHammerCommand extends Command {
 
 	public BanHammerCommand() {
-		super(new String[]{"banhammer"}, EVERYONE, false);
+		super(EVERYONE, false, "banhammer");
 	}
 
 	@Override

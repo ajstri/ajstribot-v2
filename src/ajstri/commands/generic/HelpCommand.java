@@ -13,7 +13,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class HelpCommand extends Command {
 
 	public HelpCommand() {
-		super(new String[]{"help"}, EVERYONE, false);
+		super(EVERYONE, false, "help");
 	}
 
 	@Override

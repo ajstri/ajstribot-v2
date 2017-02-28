@@ -13,7 +13,7 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 public class GuildInfoCommand extends Command {
 
 	public GuildInfoCommand() {
-		super(new String[]{"guildinfo"}, Permission.ADMINISTRATOR, true);
+		super(Permission.ADMINISTRATOR, true, "guildinfo");
 	}
 
 	@Override
