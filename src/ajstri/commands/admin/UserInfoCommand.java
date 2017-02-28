@@ -38,7 +38,7 @@ public class UserInfoCommand extends Command {
 	            return;
 			}
 			if(args.length>=2) {
-				Member m = e.getGuild().getMembersByName(args[1].replace("@", ""), false).get(0);
+				Member m = e.getGuild().getMembersByName(args[1].replaceFirst("@", ""), false).get(0);
 				if(m == null) {
 					e.sendMessage("Could not find requested User.");
 					return;

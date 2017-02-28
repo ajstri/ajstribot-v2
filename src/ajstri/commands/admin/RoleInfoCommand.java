@@ -28,7 +28,7 @@ public class RoleInfoCommand extends Command {
 				return;
 			}
 			EmbedBuilder eb = new EmbedBuilder();
-			eb.setColor(null);
+			eb.setColor(Color.RED);
 			eb.addField(role.getName(), 
 					"**"+(e.getGuild().getMembersWithRoles(role).size()==1?"User":"Users")+"with Role:** "+e.getGuild().getMembersWithRoles(role).size()+"\n"
 					+ "**Position:** "+role.getPosition()+"\n"

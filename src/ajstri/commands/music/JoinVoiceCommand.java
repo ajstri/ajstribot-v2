@@ -1,9 +1,13 @@
 package ajstri.commands.music;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import ajstri.Category;
 import ajstri.Main;
 import ajstri.commands.Command;
 import net.dv8tion.jda.core.entities.VoiceChannel;
+import quack.ddbl.core.DDBLCore;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
 public class JoinVoiceCommand extends Command {
@@ -14,22 +18,14 @@ public class JoinVoiceCommand extends Command {
 
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
-		if(args.length==2) {
-		    for(VoiceChannel vc : e.getGuild().getVoiceChannels()) {
-		        if(vc.getName().contentEquals(args[1])) {
-		            Main.ami = e.getGuild().getAudioManager();
-		            Main.ami.openAudioConnection(vc);
-		            e.getChannel().sendMessage("Connected To: **" + vc.getName() + "**").queue();
-		            System.out.println(e.getAuthor() + "Executed in Guild: JOIN");
-		        } else {
-		        	if(vc.getName().equals(args[1])){
-		        		Main.ami = e.getGuild().getAudioManager();
-			            Main.ami.openAudioConnection(vc);
-			            e.getChannel().sendMessage("Connected To: **" + vc.getName() + "**").queue();
-			            System.out.println(e.getAuthor() + "Executed in Guild: JOIN");
-		        	}
-		        }
-		    }
+		if(args.length==1) {
+			DDBLCore.getAudioManager().join(e);
+			return;
+		}
+		if(args.length>=2) {
+			String voice = Arrays.stream(args).collect(Collectors.joining(" ")).replace(args[0]+" ", "");
+			DDBLCore.getAudioManager().join(e, voice);
+			return;
 		}
 	}
 
