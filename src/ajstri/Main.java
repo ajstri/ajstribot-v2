@@ -4,7 +4,6 @@ import ajstri.commands.admin.*;
 import ajstri.commands.fun.*;
 import ajstri.commands.generic.*;
 import ajstri.commands.music.*;
-import net.dv8tion.jda.core.managers.AudioManager;
 import quack.ddbl.core.DDBLCore;
 
 public class Main extends DDBLCore {
@@ -12,8 +11,6 @@ public class Main extends DDBLCore {
 	public Main() {
 		super(Data.cmdPrefix, Data.TOKEN);
 	}
-	
-	public static AudioManager ami;
 	
 	public static void main(String[] args) {
 		new Main();
