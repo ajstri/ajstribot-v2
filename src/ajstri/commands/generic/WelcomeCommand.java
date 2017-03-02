@@ -3,7 +3,7 @@ package ajstri.commands.generic;
 import ajstri.Category;
 import ajstri.commands.Command;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
-import quack.ddbl.core.message.MessageUtils;
+import quack.ddbl.core.utils.MessageUtils;
 
 public class WelcomeCommand extends Command {
 
