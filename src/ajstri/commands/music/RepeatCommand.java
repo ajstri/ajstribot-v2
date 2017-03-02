@@ -1,16 +1,16 @@
 package ajstri.commands.music;
 
-import quack.ddbl.core.*;
+import quack.ddbl.core.DDBLCore;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class SkipCommand extends MusicCommand {
+public class RepeatCommand extends MusicCommand {
 
-	public SkipCommand() {
-		super("skip");
+	public RepeatCommand () {
+		super("repeat");
 	}
 	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
-		DDBLCore.getAudioManager().skip(e);
+		DDBLCore.getAudioManager().repeat(e);
 	}
 }

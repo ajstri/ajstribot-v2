@@ -37,5 +37,6 @@ public class Main extends DDBLCore {
 		registerCommand(new PauseCommand());
 		registerCommand(new NowPlayingCommand());
 		registerCommand(new SkipCommand());
+		registerCommand(new RepeatCommand());
 	}
 }
