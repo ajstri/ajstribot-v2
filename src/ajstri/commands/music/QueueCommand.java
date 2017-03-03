@@ -1,6 +1,5 @@
 package ajstri.commands.music;
 
-import quack.ddbl.core.DDBLCore;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
 public class QueueCommand extends MusicCommand {
@@ -11,9 +10,9 @@ public class QueueCommand extends MusicCommand {
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(args.length == 2 && args[0].contains("queue")) {
-			DDBLCore.getAudioManager().play(e,args[1]);
+			e.getAudioManager().play(args[1], e);
 			return;
 		}
-		DDBLCore.getAudioManager().list(e);
+		e.getAudioManager().list(e);
 	}
 }

@@ -9,7 +9,7 @@ import quack.ddbl.core.DDBLCore;
 public class Main extends DDBLCore {
 	
 	public Main() {
-		super(Data.cmdPrefix, Data.TOKEN);
+		super(Data.cmdPrefix, Data.TOKEN, 4);
 	}
 	
 	public static void main(String[] args) {
