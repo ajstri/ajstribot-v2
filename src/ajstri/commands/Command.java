@@ -7,6 +7,14 @@ import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
 public abstract class Command extends ICommand {
 	
+	public Command(String permission, boolean guildOnly, String name) {
+		super(name, permission, guildOnly);
+	}
+
+	public Command(Permission permission, boolean guildOnly, String name) {
+		super(name, permission, guildOnly);
+	}
+	
 	public Command(String permission, boolean guildOnly, String... names) {
 		super(permission, guildOnly, names);
 	}

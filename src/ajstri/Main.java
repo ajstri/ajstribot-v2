@@ -9,7 +9,15 @@ import quack.ddbl.core.DDBLCore;
 public class Main extends DDBLCore {
 	
 	public Main() {
-		super(Data.cmdPrefix, Data.TOKEN, 4);
+		super(Data.cmdPrefix, Data.TOKEN, true, 4);
+		authors = new String[]{"AJStri", "Felix Vogel"};
+		description = "Who knows what's going on here?\n"
+				+ "Private bot for guild-y thing.\n"
+				+ "This project uses [DDBL](https://github.com/FelixVogel/DDBL) and [JDA](https://github.com/DV8FromTheWorld/JDA)\n"
+				+ "####Features\n"
+				+ "Yeah this is a major **WIP**";
+		version = "00a58";
+		since = "10/02/2017";
 	}
 	
 	public static void main(String[] args) {
