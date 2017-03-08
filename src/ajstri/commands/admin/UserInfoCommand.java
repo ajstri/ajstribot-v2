@@ -4,22 +4,19 @@ import java.awt.Color;
 import java.time.format.DateTimeFormatter;
 
 import ajstri.Category;
-import ajstri.commands.Command;
+import ajstri.commands.ICommand;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.User;
+import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class UserInfoCommand extends Command {
-
-	public UserInfoCommand() {
-		super(Permission.ADMINISTRATOR, false, "userinfo");
-	}
+@Command(aliases={"userinfo"}, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="See some information about a User.")
+public class UserInfoCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		if(e.isGuildMessage()) {
 			EmbedBuilder eb = new EmbedBuilder();
 			eb.setColor(Color.RED);
@@ -68,11 +65,6 @@ public class UserInfoCommand extends Command {
             e.sendMessage(eb.build());
             return;
 		}
-	}
-
-	@Override
-	public String setCommandInfo() {
-		return "See some information about a User.";
 	}
 
 	@Override

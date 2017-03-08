@@ -1,23 +1,16 @@
 package ajstri.commands.fun;
 
 import ajstri.Category;
-import ajstri.commands.Command;
+import ajstri.commands.ICommand;
+import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class FishCommand extends Command {
-
-	public FishCommand() {
-		super("ajstri.fish", false, "fish");
-	}
+@Command(aliases={"fish"}, permission="ajstri.fish", description="Fish Command")
+public class FishCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		e.sendMessage("Fish, fish! Everyone gets a fish! :fish:");
-	}
-
-	@Override
-	public String setCommandInfo() {
-		return "Fish Command";
 	}
 
 	@Override

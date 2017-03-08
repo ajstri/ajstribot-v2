@@ -1,20 +1,17 @@
 package ajstri.commands.admin;
 
 import ajstri.Category;
-import ajstri.commands.Command;
-import net.dv8tion.jda.core.Permission;
+import ajstri.commands.ICommand;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
+import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class BanCommand extends Command {
-
-	public BanCommand() {
-		super(Permission.ADMINISTRATOR, true, "ban");
-	}
+@Command(aliases={"ban"}, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="Ban a member from your Guild!")
+public class BanCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		if(e.isGuildMessage()) {
 			if(args.length == 2) {
 				Guild g = e.getGuild();
@@ -29,11 +26,6 @@ public class BanCommand extends Command {
 		else {
 			e.sendMessage("B-b-b-b-but... this isn't a *guild*!");
 		}
-	}
-
-	@Override
-	public String setCommandInfo() {
-		return "Ban a member from your Guild!";
 	}
 	
 	@Override

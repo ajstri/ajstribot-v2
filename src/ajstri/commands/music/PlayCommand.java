@@ -1,15 +1,15 @@
 package ajstri.commands.music;
 
+import ajstri.Category;
+import ajstri.commands.ICommand;
+import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class PlayCommand extends MusicCommand {
-
-	public PlayCommand() {
-		super("play");
-	}
+@Command(aliases={"play"}, permission="ajstri.music.play", description="Unpause the player, or add a song")
+public class PlayCommand implements ICommand {
 	
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		if(args.length==1) {
 			e.getAudioManager().play(e);
 			return;
@@ -19,4 +19,10 @@ public class PlayCommand extends MusicCommand {
 			return;
 		}
 	}
+	
+	@Override
+	public Category setCategory() {
+		return Category.Music;
+	}
+	
 }

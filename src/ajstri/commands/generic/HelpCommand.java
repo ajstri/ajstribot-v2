@@ -5,19 +5,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import ajstri.Category;
-import ajstri.commands.Command;
+import ajstri.commands.ICommand;
 import net.dv8tion.jda.core.EmbedBuilder;
 import quack.ddbl.core.DDBLCore;
+import quack.ddbl.core.commands.Command;
+import quack.ddbl.core.commands.CommandRegistry.CommandEntry;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class HelpCommand extends Command {
-
-	public HelpCommand() {
-		super(EVERYONE, false, "help");
-	}
+@Command(aliases={"help"}, description="Help Command!")
+public class HelpCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		EmbedBuilder eb = new EmbedBuilder();
 		eb.setColor(Color.RED);
 		if(args.length==1) {
@@ -33,11 +32,17 @@ public class HelpCommand extends Command {
 		if(args.length==2) {
 			if(Category.getNames().contains(args[1])) {
 				eb.addField("Help: "+args[1], "", true);
-				for(String[] ckey : DDBLCore.getDDBLInstance().getCommandMap().keySet()) {
-					if(DDBLCore.getDDBLInstance().getCommandMap().get(ckey) instanceof ajstri.commands.Command) {
-						Command cmd = (Command)DDBLCore.getDDBLInstance().getCommandMap().get(ckey);
-						if(cmd.setCategory()==null||cmd.setCommandInfo()==null) System.out.println(cmd.getNames()[0]+" has a null value!");
-						else if(cmd.setCategory().getName().equalsIgnoreCase(args[1])) eb.addField(cmd.getNames()[0], cmd.setCommandInfo(), true);
+				for(String[] ckey : DDBLCore.getCommandRegistry().getHelpMap().keySet()) {
+					CommandEntry entry = DDBLCore.getCommandRegistry().getHelpMap().get(ckey);
+					try {
+						ICommand cmd = (ICommand)entry.cls.newInstance();
+						if(cmd.setCategory().getName().equalsIgnoreCase(args[1])) eb.addField(DDBLCore.getPrefix()+entry.commandMeta.aliases()[0], entry.commandMeta.description(), true);
+					}
+					catch(InstantiationException e1) {
+						e1.printStackTrace();
+					}
+					catch(IllegalAccessException e1) {
+						e1.printStackTrace();
 					}
 				}
 				e.sendMessage(eb.build());
@@ -50,13 +55,8 @@ public class HelpCommand extends Command {
 	}
 
 	@Override
-	public String setCommandInfo() {
-		return null;
-	}
-
-	@Override
 	public Category setCategory() {
-		return null;
+		return Category.Generic;
 	}
 	
 }

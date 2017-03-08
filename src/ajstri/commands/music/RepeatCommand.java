@@ -1,15 +1,21 @@
 package ajstri.commands.music;
 
+import ajstri.Category;
+import ajstri.commands.ICommand;
+import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class RepeatCommand extends MusicCommand {
-
-	public RepeatCommand () {
-		super("repeat");
+@Command(aliases={"repeat"}, permission="ajstri.music.repeat", description="Set the player to repeat/non-repeat")
+public class RepeatCommand implements ICommand {
+	
+	@Override
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+		e.getAudioManager().repeat(e);
 	}
 	
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
-		e.getAudioManager().repeat(e);
+	public Category setCategory() {
+		return Category.Music;
 	}
+	
 }

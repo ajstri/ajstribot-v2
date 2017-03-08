@@ -1,23 +1,16 @@
 package ajstri.commands.fun;
 
 import ajstri.Category;
-import ajstri.commands.Command;
+import ajstri.commands.ICommand;
+import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class GiggleCommand extends Command {
-
-	public GiggleCommand() {
-		super(EVERYONE, false, "giggle");
-	}
+@Command(aliases={"giggle"}, description="Giggles!")
+public class GiggleCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		e.sendMessage("*giggles*");
-	}
-
-	@Override
-	public String setCommandInfo() {
-		return "Giggles!";
 	}
 
 	@Override

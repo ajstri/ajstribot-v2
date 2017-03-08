@@ -1,24 +1,16 @@
 package ajstri.commands.admin;
 
 import ajstri.Category;
-import ajstri.commands.Command;
-import net.dv8tion.jda.core.Permission;
+import ajstri.commands.ICommand;
+import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class AdminTestCommand extends Command {
-
-	public AdminTestCommand() {
-		super(Permission.ADMINISTRATOR, true, "adtest");
-	}
+@Command(aliases={"adtest"}, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="Yes")
+public class AdminTestCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		System.out.println(e.getMember().getPermissions());
-	}
-
-	@Override
-	public String setCommandInfo() {
-		return "Yes";
 	}
 	
 	@Override

@@ -5,20 +5,17 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import ajstri.Category;
-import ajstri.commands.Command;
+import ajstri.commands.ICommand;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Role;
+import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
 
-public class RoleInfoCommand extends Command {
-
-	public RoleInfoCommand() {
-		super(Permission.ADMINISTRATOR, true, "roleinfo");
-	}
+@Command(aliases={"roleinfo"}, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="See some information about an Role...")
+public class RoleInfoCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		if(args.length>=2) {
 			String roleNameRaw = Arrays.stream(args).collect(Collectors.joining(" ")).replace(args[0]+" ", "");
 			roleNameRaw = roleNameRaw.replaceFirst("@", "");
@@ -36,11 +33,6 @@ public class RoleInfoCommand extends Command {
 					+ "**Color Values** [R:"+role.getColor().getRed()+", G:"+role.getColor().getGreen()+", B:"+role.getColor().getBlue()+"]", true);
 			e.sendMessage(eb.build());
 		}
-	}
-
-	@Override
-	public String setCommandInfo() {
-		return "See some information about an Role...";
 	}
 
 	@Override
