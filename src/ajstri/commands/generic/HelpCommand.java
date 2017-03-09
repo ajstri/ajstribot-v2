@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import quack.ddbl.core.DDBLCore;
 import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.CommandRegistry.CommandEntry;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"help"}, description="Help Command!")
 public class HelpCommand implements ICommand {

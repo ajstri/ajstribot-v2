@@ -3,7 +3,7 @@ package ajstri.commands.music;
 import ajstri.Category;
 import ajstri.commands.ICommand;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"leave"}, permission="ajstri.music.leave", description="Make the Bot leave the VoiceChannel")
 public class LeaveVoiceCommand implements ICommand {

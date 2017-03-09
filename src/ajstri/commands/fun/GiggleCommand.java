@@ -3,7 +3,7 @@ package ajstri.commands.fun;
 import ajstri.Category;
 import ajstri.commands.ICommand;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"giggle"}, description="Giggles!")
 public class GiggleCommand implements ICommand {

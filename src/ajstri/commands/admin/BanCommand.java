@@ -5,7 +5,7 @@ import ajstri.commands.ICommand;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"ban"}, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="Ban a member from your Guild!")
 public class BanCommand implements ICommand {

@@ -3,7 +3,7 @@ package ajstri.commands.music;
 import ajstri.Category;
 import ajstri.commands.ICommand;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"play"}, permission="ajstri.music.play", description="Unpause the player, or add a song")
 public class PlayCommand implements ICommand {

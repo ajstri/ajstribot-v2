@@ -3,7 +3,7 @@ package ajstri.commands.generic;
 import ajstri.Category;
 import ajstri.commands.ICommand;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"welcome"}, description="Welcome, let's get started!")
 public class WelcomeCommand implements ICommand {

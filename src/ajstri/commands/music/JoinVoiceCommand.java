@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import ajstri.Category;
 import ajstri.commands.ICommand;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"join"}, permission="ajstri.music.join", description="Make Bot join a VoiceChannel")
 public class JoinVoiceCommand implements ICommand {

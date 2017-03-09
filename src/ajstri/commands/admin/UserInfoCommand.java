@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.User;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"userinfo"}, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="See some information about a User.")
 public class UserInfoCommand implements ICommand {

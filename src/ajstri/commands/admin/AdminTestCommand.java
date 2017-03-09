@@ -3,7 +3,7 @@ package ajstri.commands.admin;
 import ajstri.Category;
 import ajstri.commands.ICommand;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"adtest"}, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="Yes")
 public class AdminTestCommand implements ICommand {

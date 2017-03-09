@@ -8,7 +8,7 @@ import ajstri.commands.ICommand;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"guildinfo"}, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="Some Guild information...")
 public class GuildInfoCommand implements ICommand {

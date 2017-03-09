@@ -9,7 +9,7 @@ import ajstri.commands.ICommand;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Role;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"roleinfo"}, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="See some information about an Role...")
 public class RoleInfoCommand implements ICommand {

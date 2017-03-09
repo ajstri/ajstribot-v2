@@ -4,7 +4,7 @@ import ajstri.Category;
 import ajstri.commands.ICommand;
 import net.dv8tion.jda.core.entities.Member;
 import quack.ddbl.core.commands.Command;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
 @Command(aliases={"getid"}, permission="ADMINISTRATOR", isJDAPermission=true, description="Get the ID of an User.")
 public class GetIDCommand implements ICommand {
