@@ -10,7 +10,7 @@ public class SkipCommand implements ICommand {
 	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		e.getAudioManager().skip(e);
+		e.getAudioManager().skipWOAction(e);
 	}
 	
 	@Override

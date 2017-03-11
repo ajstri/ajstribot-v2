@@ -10,7 +10,7 @@ public class RepeatCommand implements ICommand {
 	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		e.getAudioManager().repeat(e);
+		e.getAudioManager().repeatWOAction(e);
 	}
 	
 	@Override

@@ -11,11 +11,11 @@ public class PlayCommand implements ICommand {
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		if(args.length==1) {
-			e.getAudioManager().play(e);
+			e.getAudioManager().playWOAction(e);
 			return;
 		}
 		if(args.length==2) {
-			e.getAudioManager().play(args[1], e);
+			e.getAudioManager().playWOAction(args[1], e);
 			return;
 		}
 	}

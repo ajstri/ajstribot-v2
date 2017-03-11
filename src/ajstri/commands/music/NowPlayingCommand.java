@@ -10,7 +10,7 @@ public class NowPlayingCommand implements ICommand {
 	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		e.getAudioManager().nowPlaying(e);
+		e.getAudioManager().nowPlayingWOAction(e);
 	}
 	
 	@Override

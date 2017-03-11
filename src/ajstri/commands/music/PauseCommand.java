@@ -10,7 +10,7 @@ public class PauseCommand implements ICommand {
 	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		e.getAudioManager().pause(e);
+		e.getAudioManager().pauseWOAction(e);
 	}
 	
 	@Override

@@ -10,7 +10,7 @@ public class LeaveVoiceCommand implements ICommand {
 	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		e.getAudioManager().leave(e);
+		e.getAudioManager().leaveWOAction(e);
 	}
 	
 	@Override

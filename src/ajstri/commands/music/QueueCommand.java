@@ -11,10 +11,10 @@ public class QueueCommand implements ICommand {
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		if(args.length == 2 && args[0].contains("queue")) {
-			e.getAudioManager().play(args[1], e);
+			e.getAudioManager().playWOAction(args[1], e);
 			return;
 		}
-		e.getAudioManager().list(e);
+		e.getAudioManager().listWOAction(e);
 	}
 	
 	@Override
