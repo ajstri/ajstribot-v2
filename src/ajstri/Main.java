@@ -27,6 +27,9 @@ public class Main extends DDBLCore {
 	}
 
 	@Override
+	public void preInit() {}
+	
+	@Override
 	public void onStart() {
 		registerCommand(AdminTestCommand.class);
 		registerCommand(BanCommand.class);
@@ -49,4 +52,5 @@ public class Main extends DDBLCore {
 		registerCommand(SkipCommand.class);
 		registerCommand(RepeatCommand.class);
 	}
+
 }
