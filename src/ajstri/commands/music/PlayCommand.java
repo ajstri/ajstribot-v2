@@ -15,7 +15,7 @@ public class PlayCommand implements ICommand {
 			return;
 		}
 		if(args.length==2) {
-			e.getAudioManager().playWOAction(args[1], e);
+			e.getAudioManager().play(args[1], e);
 			return;
 		}
 	}
