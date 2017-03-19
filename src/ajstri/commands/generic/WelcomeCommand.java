@@ -1,11 +1,11 @@
 package ajstri.commands.generic;
 
 import ajstri.Category;
-import ajstri.commands.ICommand;
 import quack.ddbl.core.commands.Command;
+import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"welcome"}, description="Welcome, let's get started!")
+@Command(aliases={"welcome"}, category=Category.GENERIC, description="Welcome, let's get started!")
 public class WelcomeCommand implements ICommand {
 
 	@Override
@@ -18,11 +18,6 @@ public class WelcomeCommand implements ICommand {
 				"Admin commands are sorted by default. If you have Administrative privilages, " +
 				"you can use them in a guild! \n" +
 				"Type `/help` to begin...");
-	}
-
-	@Override
-	public Category setCategory() {
-		return Category.Generic;
 	}
 
 }

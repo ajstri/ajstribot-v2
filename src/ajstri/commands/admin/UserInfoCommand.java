@@ -1,18 +1,16 @@
 package ajstri.commands.admin;
 
 import java.awt.Color;
-import java.time.format.DateTimeFormatter;
 
 import ajstri.Category;
-import ajstri.commands.ICommand;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.User;
 import quack.ddbl.core.commands.Command;
+import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.utils.MemberUtils;
 
-@Command(aliases={"userinfo"}, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="See some information about a User.")
+@Command(aliases={"userinfo"}, category=Category.ADMIN, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="See some information about a User.")
 public class UserInfoCommand implements ICommand {
 
 	@Override
@@ -21,17 +19,7 @@ public class UserInfoCommand implements ICommand {
 			EmbedBuilder eb = new EmbedBuilder();
 			eb.setColor(Color.RED);
 			if(args.length==1) {
-				Member m = e.getMember();
-				User u = m.getUser();
-	            eb.addField(u.getName()+"\n",
-	                    "**Created:** "+u.getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
-	                    + "**Role Count:** "+m.getRoles().size()+"\n"
-	                    + "**isOwner:** "+m.isOwner()+"\n"
-	                    + "**isBot:** "+u.isBot()+"\n"
-	                    + "**OnlineStatus:** "+(m.getOnlineStatus()==OnlineStatus.INVISIBLE?"OFFLINE":m.getOnlineStatus().toString())+"\n"
-	                    + "**Avatar:**", true);
-	            eb.setImage(u.getAvatarUrl());
-	            e.sendMessage(eb.build());
+	            e.sendMessage(e.getMemberUtils().getUserInfoFor(e.getMember()).asMessageEmbed(Color.RED));
 	            return;
 			}
 			if(args.length>=2) {
@@ -40,36 +28,13 @@ public class UserInfoCommand implements ICommand {
 					e.sendMessage("Could not find requested User.");
 					return;
 				}
-				User u = m.getUser();
-	            eb.addField(u.getName()+"\n",
-	                    "**Created:** "+u.getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
-	                    + "**Role Count:** "+m.getRoles().size()+"\n"
-	                    + "**isOwner:** "+m.isOwner()+"\n"
-	                    + "**isBot:** "+u.isBot()+"\n"
-	                    + "**OnlineStatus:** "+(m.getOnlineStatus()==OnlineStatus.INVISIBLE?"OFFLINE":m.getOnlineStatus().toString())+"\n"
-	                    + "**Avatar:**", true);
-	            eb.setImage(u.getAvatarUrl());
-	            e.sendMessage(eb.build());
+	            e.sendMessage(e.getMemberUtils().getUserInfoFor(m).asMessageEmbed(Color.RED));
 	            return;
 			}
 		} else {
-			EmbedBuilder eb = new EmbedBuilder();
-			eb.setColor(Color.RED);
-			User u = e.getAuthor();
-            eb.addField(u.getName()+"\n",
-                    "**Created:** "+u.getCreationTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"\n"
-                    + "**isBot:** "+u.isBot()+"\n"
-                    + "**OnlineStatus:** "+(u.getJDA().getPresence().getStatus()==OnlineStatus.INVISIBLE?"OFFLINE":u.getJDA().getPresence().getStatus().toString())+"\n"
-                    + "**Avatar:**", true);
-            eb.setImage(u.getAvatarUrl());
-            e.sendMessage(eb.build());
+            e.sendMessage(new MemberUtils(null).getUserInfoFor(e.getAuthor()).asMessageEmbed(Color.RED));
             return;
 		}
-	}
-
-	@Override
-	public Category setCategory() {
-		return Category.Admin;
 	}
 
 }

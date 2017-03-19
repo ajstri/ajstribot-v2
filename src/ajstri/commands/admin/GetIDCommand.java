@@ -1,12 +1,12 @@
 package ajstri.commands.admin;
 
 import ajstri.Category;
-import ajstri.commands.ICommand;
 import net.dv8tion.jda.core.entities.Member;
 import quack.ddbl.core.commands.Command;
+import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"getid"}, permission="ADMINISTRATOR", isJDAPermission=true, description="Get the ID of an User.")
+@Command(aliases={"getid"}, category=Category.ADMIN, permission="ADMINISTRATOR", isJDAPermission=true, description="Get the ID of an User.")
 public class GetIDCommand implements ICommand {
 
 	@Override
@@ -23,11 +23,6 @@ public class GetIDCommand implements ICommand {
 		} else {
 			e.sendMessage("Your ID: "+e.getAuthor().getId());
 		}
-	}
-	
-	@Override
-	public Category setCategory() {
-		return Category.Admin;
 	}
 	
 }
