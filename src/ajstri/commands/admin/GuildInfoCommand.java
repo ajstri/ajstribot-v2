@@ -12,7 +12,7 @@ public class GuildInfoCommand implements ICommand {
 
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		e.sendMessage(e.getGuildUtils().getGuildInfo().asMessageEmbed(Color.RED));
+		e.sendMessage(e.getGuildUtils().getGuildInfo(e.getShardID()).asMessageEmbed(Color.RED));
 	}
 	
 }
