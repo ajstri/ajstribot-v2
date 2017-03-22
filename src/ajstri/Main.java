@@ -35,7 +35,7 @@ public class Main extends DDBLCore {
 		"This project uses [DDBL](https://github.com/FelixVogel/DDBL) and [JDA](https://github.com/DV8FromTheWorld/JDA)\n"+ 
 		"**Features**\n"+ 
 		"Yeah this is a major **WIP**";
-		version = "00a59";
+		version = "00a64.5";
 		since = "10/02/2017";
 	}
 	
