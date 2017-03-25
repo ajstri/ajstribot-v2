@@ -1,30 +1,20 @@
 package ajstri.commands.fun;
 
-import ajstri.Category;
-import ajstri.commands.Command;
-import quack.ddbl.core.api.CatAPI;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import java.awt.Color;
 
-public class CatCommand extends Command {
-	
-	public CatCommand() {
-		super(EVERYONE, false, "cat");
-	}
+import ajstri.Category;
+import quack.ddbl.core.api.Cat_API;
+import quack.ddbl.core.commands.Command;
+import quack.ddbl.core.commands.ICommand;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
+
+@Command(aliases={"cry"}, category=Category.FUN, description="Random Cats")
+public class CatCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
-		CatAPI.getRandomCatPictureURL().after(c -> {
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+		Cat_API.getRandomCatPicture().after(c -> {
 			e.sendMessage(c.asMessageEmbed(Color.GREEN));
 		});
-	}
-
-	@Override
-	public String setCommandInfo() {
-		return "Cat images!";
-	}
-
-	@Override
-	public Category setCategory() {
-		return Category.Fun;
 	}
 }

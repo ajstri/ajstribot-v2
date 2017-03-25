@@ -2,18 +2,17 @@ package ajstri.commands.music;
 
 import java.awt.Color;
 
+import ajstri.Category;
 import net.dv8tion.jda.core.EmbedBuilder;
-import quack.ddbl.core.message.ExtendedMessageReceivedEvent;
+import quack.ddbl.core.commands.Command;
+import quack.ddbl.core.commands.ICommand;
+import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-
-public class VolumeCommand extends MusicCommand {
-	
-	public VolumeCommand() {
-		super("volume", "v");
-	}
+@Command(aliases={"volume", "v"}, category=Category.MUSIC, permission="ajstri.music.volume", description="Volume...")
+public class VolumeCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e) {
+	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
 		if(args.length==1) e.getAudioManager().volumeWOAction(e);
 		else if(args.length==2) {
 			int newVolume = 0;
@@ -35,6 +34,6 @@ public class VolumeCommand extends MusicCommand {
 			}
 			e.getAudioManager().volumeWOAction(newVolume, e);
 		}
-		
 	}
+	
 }
