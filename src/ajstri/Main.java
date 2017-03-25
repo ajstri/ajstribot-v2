@@ -1,25 +1,9 @@
 package ajstri;
 
-import ajstri.commands.admin.AdminTestCommand;
-import ajstri.commands.admin.BanCommand;
-import ajstri.commands.admin.GetIDCommand;
-import ajstri.commands.admin.GuildInfoCommand;
-import ajstri.commands.admin.RoleInfoCommand;
-import ajstri.commands.admin.UserInfoCommand;
-import ajstri.commands.fun.BanHammerCommand;
-import ajstri.commands.fun.CryCommand;
-import ajstri.commands.fun.FishCommand;
-import ajstri.commands.fun.GiggleCommand;
-import ajstri.commands.generic.HelpCommand;
-import ajstri.commands.generic.WelcomeCommand;
-import ajstri.commands.music.JoinVoiceCommand;
-import ajstri.commands.music.LeaveVoiceCommand;
-import ajstri.commands.music.NowPlayingCommand;
-import ajstri.commands.music.PauseCommand;
-import ajstri.commands.music.PlayCommand;
-import ajstri.commands.music.QueueCommand;
-import ajstri.commands.music.RepeatCommand;
-import ajstri.commands.music.SkipCommand;
+import ajstri.commands.admin.*;
+import ajstri.commands.fun.*;
+import ajstri.commands.generic.*;
+import ajstri.commands.music.*;
 import net.dv8tion.jda.core.entities.Game;
 import quack.ddbl.core.DDBLCore;
 
@@ -71,6 +55,8 @@ public class Main extends DDBLCore {
 		registerCommand(NowPlayingCommand.class);
 		registerCommand(SkipCommand.class);
 		registerCommand(RepeatCommand.class);
+		registerCommand(CatCommand.class);
+		registerCommand(VolumeCommand.class);
 	}
 
 }
