@@ -5,13 +5,14 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import ajstri.Category;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Role;
 import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 import quack.ddbl.core.utils.RoleUtils;
 
-@Command(aliases={"roleinfo"}, category=Category.ADMIN, guildOnly=true, permission="ADMINISTRATOR", isJDAPermission=true, description="See some information about an Role...")
+@Command(aliases={"roleinfo"}, category=Category.ADMIN, guildOnly=true, jdaPermissions={Permission.ADMINISTRATOR}, isJDAPermission=true, description="See some information about an Role...")
 public class RoleInfoCommand implements ICommand {
 
 	@Override

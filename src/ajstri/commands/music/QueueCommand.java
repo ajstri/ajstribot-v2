@@ -5,7 +5,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"list", "queue"}, category=Category.MUSIC, permission="ajstri.music.list", description="List the Songs in queue, or add a Song queue [url]")
+@Command(aliases={"list", "queue"}, category=Category.MUSIC, permissions={"ajstri.music.list"}, description="List the Songs in queue, or add a Song queue [url]")
 public class QueueCommand implements ICommand {
 	
 	@Override

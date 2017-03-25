@@ -8,7 +8,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"join"}, category=Category.MUSIC, permission="ajstri.music.join", description="Make Bot join a VoiceChannel")
+@Command(aliases={"join"}, category=Category.MUSIC, permissions={"ajstri.music.join"}, description="Make Bot join a VoiceChannel")
 public class JoinVoiceCommand implements ICommand {
 
 	@Override

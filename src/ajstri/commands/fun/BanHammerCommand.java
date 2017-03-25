@@ -5,7 +5,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"banhammer"}, category=Category.FUN, description="Drop the ban hammer.")
+@Command(aliases={"banhammer"}, category=Category.FUN, permissions={"ajstri.fun.banhammer"}, description="Drop the ban hammer.")
 public class BanHammerCommand implements ICommand {
 
 	@Override

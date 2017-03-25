@@ -5,7 +5,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"giggle"}, category=Category.FUN, description="Giggles!")
+@Command(aliases={"giggle"}, category=Category.FUN, permissions={"ajstri.fun.giggle"}, description="Giggles!")
 public class GiggleCommand implements ICommand {
 
 	@Override

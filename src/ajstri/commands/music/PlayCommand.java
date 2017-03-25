@@ -5,7 +5,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"play"}, category=Category.MUSIC, permission="ajstri.music.play", description="Unpause the player, or add a song")
+@Command(aliases={"play"}, category=Category.MUSIC, permissions={"ajstri.music.play"}, description="Unpause the player, or add a song")
 public class PlayCommand implements ICommand {
 	
 	@Override

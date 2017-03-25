@@ -5,7 +5,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"nowplaying", "np"}, category=Category.MUSIC, permission="ajstri.music.nowplaying", description="See the current playing track")
+@Command(aliases={"nowplaying", "np"}, category=Category.MUSIC, permissions={"ajstri.music.nowplaying"}, description="See the current playing track")
 public class NowPlayingCommand implements ICommand {
 	
 	@Override
