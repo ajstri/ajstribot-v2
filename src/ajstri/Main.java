@@ -57,6 +57,8 @@ public class Main extends DDBLCore {
 		registerCommand(RepeatCommand.class);
 		registerCommand(CatCommand.class);
 		registerCommand(VolumeCommand.class);
+		registerCommand(ExplosmCommand.class);
+		registerCommand(PlaylistCommand.class);
 	}
 
 }

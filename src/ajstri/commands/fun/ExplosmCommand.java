@@ -20,5 +20,4 @@ public class ExplosmCommand implements ICommand {
 			e.sendMessage(c.asMessageEmbed(Color.GREEN));
 		});;
 	}
-
 }
