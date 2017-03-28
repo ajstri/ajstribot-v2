@@ -30,7 +30,7 @@ public class Main extends DDBLCore {
 	@Override
 	public void preInit() {
 		setDefaultPrefix("/");
-		setGame(Game.of("<p>welcome to begin!"));
+		setGame(Game.of("/welcome to begin!"));
 	}
 	
 	@Override

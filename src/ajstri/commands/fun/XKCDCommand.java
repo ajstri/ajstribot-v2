@@ -2,19 +2,22 @@ package ajstri.commands.fun;
 
 import java.awt.Color;
 
-import ajstri.Category;
-import quack.ddbl.core.api.Cat_API;
+import quack.ddbl.core.api.XKCD_API;
 import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"cat", "neko"}, category=Category.FUN, description="Get a random Cat Picture")
-public class CatCommand implements ICommand {
+@Command(aliases={"xkcd", "comic"})
+public class XKCDCommand implements ICommand {
 
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		Cat_API.getRandomCatPicture().after(c -> {
+		if(args.length==1) XKCD_API.getRandomXKCDComic().after(c -> {
 			e.sendMessage(c.asMessageEmbed(Color.GREEN));
 		});
+		if(args.length==2) XKCD_API.getXKCDComic(args[1]).after(c -> {
+			e.sendMessage(c.asMessageEmbed(Color.GREEN));
+		});;
 	}
+
 }
