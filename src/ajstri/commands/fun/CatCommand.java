@@ -8,7 +8,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"cat", "neko"}, category=Category.FUN, description="Get a random Cat Picture")
+@Command(aliases={"cat", "neko"}, category=Category.FUN, description="Get a random Cat Picture", permissions={"ajstri.fun.cat"})
 public class CatCommand implements ICommand {
 
 	@Override

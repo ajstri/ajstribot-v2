@@ -8,7 +8,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"volume", "v"}, category=Category.MUSIC, description="Volume...")
+@Command(aliases={"volume", "v"}, category=Category.MUSIC, description="Volume...", permissions={"ajstri.music.volume"})
 public class VolumeCommand implements ICommand {
 
 	@Override
