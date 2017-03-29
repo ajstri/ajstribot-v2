@@ -8,8 +8,8 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"ban"}, category=Category.ADMIN, guildOnly=true, jdaPermissions={Permission.ADMINISTRATOR}, isJDAPermission=true, description="Ban a member from your Guild!")
-public class BanCommand implements ICommand {
+@Command(aliases={"kick"}, category=Category.ADMIN, guildOnly=true, jdaPermissions={Permission.ADMINISTRATOR}, isJDAPermission=true, description="Ban a member from your Guild!")
+public class KickCommand implements ICommand {
 
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
@@ -21,8 +21,7 @@ public class BanCommand implements ICommand {
 					e.sendMessage("Cannot find requested Member.");
 					return;
 				}
-				g.getController().ban(m, 0).queue(success -> e.sendMessage("Banned "+m.getEffectiveName()+"! Cya!"));
-				// g.getController().kick(m).queue(success -> e.sendMessage("Kicked "+m.getEffectiveName()+"! Cya!"));
+				g.getController().kick(m).queue(success -> e.sendMessage("Kicked "+m.getEffectiveName()+"! Cya!"));
 			}
 		} 
 		else {
