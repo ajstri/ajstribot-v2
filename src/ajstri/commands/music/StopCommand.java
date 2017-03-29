@@ -4,7 +4,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"leave"}, guildOnly=true, permissions={"ddbl.music.leave"}, description="Makes the Bot leave the connected VoiceChannel")
+@Command(aliases={"stop"}, guildOnly=true, permissions={"ajstri.music.stop"}, description="Makes the Bot leave the connected VoiceChannel")
 public class StopCommand implements ICommand {
 	
 	@Override

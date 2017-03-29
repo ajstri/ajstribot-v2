@@ -7,7 +7,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"search"}, guildOnly=true, permissions={"ajstri.music.search"}, description="Search a YouTube Song")
+@Command(aliases={"play-s", "search"}, guildOnly=true, permissions={"ajstri.music.search"}, description="Search a YouTube Song")
 public class SearchCommand implements ICommand {
 
 	@Override
