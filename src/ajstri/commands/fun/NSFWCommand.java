@@ -7,7 +7,7 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"nsfw"}, permissions={"ddbl.nsfw"}, description="NSFW!!!")
+@Command(aliases={"nsfw"}, permissions={"ajstri.fun.nsfw"}, description="NSFW!!!")
 public class NSFWCommand implements ICommand {
 
 	@Override
