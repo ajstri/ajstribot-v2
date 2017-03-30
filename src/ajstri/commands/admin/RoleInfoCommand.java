@@ -16,9 +16,9 @@ import quack.ddbl.core.utils.RoleUtils;
 public class RoleInfoCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		if(args.length>=2) {
-			String roleNameRaw = Arrays.stream(args).collect(Collectors.joining(" ")).replace(args[0]+" ", "");
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.args.length>=2) {
+			String roleNameRaw = Arrays.stream(e.args).collect(Collectors.joining(" ")).replace(e.args[0]+" ", "");
 			roleNameRaw = roleNameRaw.replaceFirst("@", "");
 			Role role = e.getGuild().getRolesByName(roleNameRaw, false).get(0);
 			if(role==null) {

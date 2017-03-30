@@ -9,9 +9,9 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class QueueCommand implements ICommand {
 	
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		if(args.length == 2 && args[0].contains("queue")) {
-			e.getAudioManager().play(args[1], e);
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.args.length == 2 && e.args[0].contains("queue")) {
+			e.getAudioManager().play(e.args[1], e);
 			return;
 		}
 		e.getAudioManager().listWOAction(e);

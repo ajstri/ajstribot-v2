@@ -8,7 +8,7 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class StopCommand implements ICommand {
 	
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+	public void execute(ExtendedMessageReceivedEvent e) {
 		e.getAudioManager().stopWOAction(e);
 		e.getAudioManager().leaveWOAction(e);
 	}

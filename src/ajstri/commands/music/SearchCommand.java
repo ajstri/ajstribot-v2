@@ -11,8 +11,8 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class SearchCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		String search = Arrays.asList(args).stream().collect(Collectors.joining(" ")).replace(args[0]+" ", "");
+	public void execute(ExtendedMessageReceivedEvent e) {
+		String search = Arrays.asList(e.args).stream().collect(Collectors.joining(" ")).replace(e.args[0]+" ", "");
 		e.getAudioManager().searchWOAction(search, e, false);
 	}
 }

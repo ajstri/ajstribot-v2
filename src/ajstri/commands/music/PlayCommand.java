@@ -9,13 +9,13 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class PlayCommand implements ICommand {
 	
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		if(args.length==1) {
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.args.length==1) {
 			e.getAudioManager().playWOAction(e);
 			return;
 		}
-		if(args.length==2) {
-			e.getAudioManager().play(args[1], e);
+		if(e.args.length==2) {
+			e.getAudioManager().play(e.args[1], e);
 			return;
 		}
 	}

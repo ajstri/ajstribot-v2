@@ -12,11 +12,11 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class ExplosmCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		if(args.length==1) Explosm_API.getRandomExplosmComic().after(c -> {
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.args.length==1) Explosm_API.getRandomExplosmComic().after(c -> {
 			e.sendMessage(c.asMessageEmbed(Color.GREEN));
 		});
-		if(args.length==2) Explosm_API.getExplosmComic(args[1]).after(c -> {
+		if(e.args.length==2) Explosm_API.getExplosmComic(e.args[1]).after(c -> {
 			e.sendMessage(c.asMessageEmbed(Color.GREEN));
 		});;
 	}

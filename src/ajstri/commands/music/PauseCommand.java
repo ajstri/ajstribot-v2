@@ -9,7 +9,7 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class PauseCommand implements ICommand {
 	
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+	public void execute(ExtendedMessageReceivedEvent e) {
 		e.getAudioManager().pauseWOAction(e);
 	}
 

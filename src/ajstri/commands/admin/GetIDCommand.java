@@ -11,10 +11,10 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class GetIDCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.isGuildMessage()) {
-			if(args.length==2) {
-				Member m = e.getGuild().getMembersByName(args[1].replaceFirst("@", ""), false).get(0);
+			if(e.args.length==2) {
+				Member m = e.getGuild().getMembersByName(e.args[1].replaceFirst("@", ""), false).get(0);
 				if(m==null) {
 					e.sendMessage("Cannot find requested Member.");
 					return;

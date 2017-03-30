@@ -8,15 +8,15 @@ import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"kick"}, category=Category.ADMIN, guildOnly=true, jdaPermissions={Permission.ADMINISTRATOR}, isJDAPermission=true, description="Ban a member from your Guild!")
+@Command(aliases={"kick"}, category=Category.ADMIN, guildOnly=true, jdaPermissions={Permission.ADMINISTRATOR}, isJDAPermission=true, description="Kick a member from your Guild!")
 public class KickCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.isGuildMessage()) {
-			if(args.length == 2) {
+			if(e.args.length == 2) {
 				Guild g = e.getGuild();
-				Member m = e.getGuild().getMembersByName(args[1].replace("@", ""), false).get(0);
+				Member m = e.getGuild().getMembersByName(e.args[1].replace("@", ""), false).get(0);
 				if(m == null) {
 					e.sendMessage("Cannot find requested Member.");
 					return;

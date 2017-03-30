@@ -9,7 +9,7 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class NowPlayingCommand implements ICommand {
 	
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+	public void execute(ExtendedMessageReceivedEvent e) {
 		e.getAudioManager().nowPlayingWOAction(e);
 	}
 

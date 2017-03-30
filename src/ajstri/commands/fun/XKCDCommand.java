@@ -11,11 +11,11 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class XKCDCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		if(args.length==1) XKCD_API.getRandomXKCDComic().after(c -> {
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.args.length==1) XKCD_API.getRandomXKCDComic().after(c -> {
 			e.sendMessage(c.asMessageEmbed(Color.GREEN));
 		});
-		if(args.length==2) XKCD_API.getXKCDComic(args[1]).after(c -> {
+		if(e.args.length==2) XKCD_API.getXKCDComic(e.args[1]).after(c -> {
 			e.sendMessage(c.asMessageEmbed(Color.GREEN));
 		});;
 	}

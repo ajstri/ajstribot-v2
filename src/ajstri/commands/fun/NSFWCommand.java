@@ -11,19 +11,19 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class NSFWCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		if(args.length==2) {
-			if(args[1].equalsIgnoreCase("yandere")) {
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.args.length==2) {
+			if(e.args[1].equalsIgnoreCase("yandere")) {
 				Yandere_API.getYanderePicture(RateType.RANDOM).after(c -> {
 					e.sendMessage(c.asMessageEmbed(Color.GREEN));
 				});
 			}
-			if(args[1].equalsIgnoreCase("kona")) {
+			if(e.args[1].equalsIgnoreCase("kona")) {
 				Konachan_API.getKonachanPicture(RateType.RANDOM).after(c -> {
 					e.sendMessage(c.asMessageEmbed(Color.GREEN));
 				});
 			}
-			if(args[1].equalsIgnoreCase("ibs")) {
+			if(e.args[1].equalsIgnoreCase("ibs")) {
 				IBSearch_API.getIBSearchPicture(RateType.RANDOM).after(c -> {
 					e.sendMessage(c.asMessageEmbed(Color.GREEN));
 				});

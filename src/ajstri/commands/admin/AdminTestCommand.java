@@ -10,8 +10,7 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class AdminTestCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+	public void execute(ExtendedMessageReceivedEvent e) {
 		System.out.println(e.getMember().getPermissions());
 	}
-	
 }

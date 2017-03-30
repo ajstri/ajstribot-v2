@@ -15,16 +15,16 @@ import quack.ddbl.core.utils.MemberUtils;
 public class UserInfoCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.isGuildMessage()) {
 			EmbedBuilder eb = new EmbedBuilder();
 			eb.setColor(Color.RED);
-			if(args.length==1) {
+			if(e.args.length==1) {
 	            e.sendMessage(e.getMemberUtils().getUserInfoFor(e.getMember()).asMessageEmbed(Color.RED));
 	            return;
 			}
-			if(args.length>=2) {
-				Member m = e.getGuild().getMembersByName(args[1].replaceFirst("@", ""), false).get(0);
+			if(e.args.length>=2) {
+				Member m = e.getGuild().getMembersByName(e.args[1].replaceFirst("@", ""), false).get(0);
 				if(m == null) {
 					e.sendMessage("Could not find requested User.");
 					return;

@@ -12,12 +12,12 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class VolumeCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		if(args.length==1) e.getAudioManager().volumeWOAction(e);
-		else if(args.length==2) {
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.args.length==1) e.getAudioManager().volumeWOAction(e);
+		else if(e.args.length==2) {
 			int newVolume = 0;
 			try {
-				newVolume = Integer.parseInt(args[1]);
+				newVolume = Integer.parseInt(e.args[1]);
 				if(newVolume<0||newVolume>100) {
 					EmbedBuilder eb = new EmbedBuilder();
 					eb.setColor(Color.RED);

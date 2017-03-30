@@ -12,7 +12,7 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class CatCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+	public void execute(ExtendedMessageReceivedEvent e) {
 		Cat_API.getRandomCatPicture().after(c -> {
 			e.sendMessage(c.asMessageEmbed(Color.GREEN));
 		});

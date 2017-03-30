@@ -12,7 +12,7 @@ import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 public class GuildInfoCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
+	public void execute(ExtendedMessageReceivedEvent e) {
 		e.sendMessage(e.getGuildUtils().getGuildInfo(e.getShardID()).asMessageEmbed(Color.RED));
 	}
 	

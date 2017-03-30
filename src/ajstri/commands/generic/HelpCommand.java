@@ -16,8 +16,8 @@ import quack.ddbl.core.utils.Embed;
 public class HelpCommand implements ICommand {
 
 	@Override
-	public void execute(ExtendedMessageReceivedEvent e, String[] args) {
-		if(args.length==1) {
+	public void execute(ExtendedMessageReceivedEvent e) {
+		if(e.args.length==1) {
 			StringBuilder sb = new StringBuilder();
 			ArrayList<String> cats = new ArrayList<String>(DDBLCore.getCommandRegistry().getCategoryMap().keySet());
 			Collections.sort(cats);
@@ -26,11 +26,11 @@ public class HelpCommand implements ICommand {
 			}
 			e.embed().color(Color.RED).field("Help: Categorys", sb.toString(), true).send();
 		}
-		if(args.length==2) {
-			if(DDBLCore.getCommandRegistry().getCategoryMap().containsKey(args[1])) {
+		if(e.args.length==2) {
+			if(DDBLCore.getCommandRegistry().getCategoryMap().containsKey(e.args[1])) {
 				Embed embed = e.embed();
-				embed.color(Color.RED).field("Help: "+args[1], "", true);
-				for(CommandEntry entry : DDBLCore.getCommandRegistry().getCategoryMap().get(args[1])) {
+				embed.color(Color.RED).field("Help: "+e.args[1], "", true);
+				for(CommandEntry entry : DDBLCore.getCommandRegistry().getCategoryMap().get(e.args[1])) {
 					embed.field(entry.commandMeta.aliases()[0], entry.commandMeta.description(), false);
 				}
 				embed.send();
