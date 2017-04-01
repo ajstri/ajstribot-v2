@@ -1,12 +1,18 @@
 package ajstri.commands.music;
 
 import ajstri.Category;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"leave"}, category=Category.MUSIC, permissions={"ajstri.music.leave"}, description="Make the Bot leave the VoiceChannel")
-public class LeaveVoiceCommand implements ICommand {
+public class LeaveVoiceCommand extends ICommand {
+	
+	public LeaveVoiceCommand() {
+		super("leave");
+		setCategory(Category.MUSIC);
+		setPermissions("ajstri.music.leave");
+		setGuildOnly(true);
+		setDescription("Make the Bot leave the Voice Channel");
+	}
 	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {

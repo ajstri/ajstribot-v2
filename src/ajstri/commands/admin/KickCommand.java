@@ -4,13 +4,19 @@ import ajstri.Category;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"kick"}, category=Category.ADMIN, guildOnly=true, jdaPermissions={Permission.ADMINISTRATOR}, isJDAPermission=true, description="Kick a member from your Guild!")
-public class KickCommand implements ICommand {
+public class KickCommand extends ICommand {
 
+	public KickCommand() {
+		super("kick");
+		setCategory(Category.ADMIN);
+		setDescription("Kick a member from a Guild");
+		setPermissions(Permission.ADMINISTRATOR);
+		setGuildOnly(true);
+	}
+	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.isGuildMessage()) {

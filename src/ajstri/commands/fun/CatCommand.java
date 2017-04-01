@@ -4,13 +4,18 @@ import java.awt.Color;
 
 import ajstri.Category;
 import quack.ddbl.core.api.Cat_API;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"cat", "neko"}, category=Category.FUN, description="Get a random Cat Picture", permissions={"ajstri.fun.cat"})
-public class CatCommand implements ICommand {
+public class CatCommand extends ICommand {
 
+	public CatCommand() {
+		super("cat", "neko");
+		setDescription("Get a random cat picture");
+		setCategory(Category.FUN);
+		setPermissions("ajstri.fun.cat");
+	}
+	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		Cat_API.getRandomCatPicture().after(c -> {

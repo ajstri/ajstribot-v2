@@ -1,13 +1,18 @@
 package ajstri.commands.fun;
 
 import ajstri.Category;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"banhammer"}, category=Category.FUN, permissions={"ajstri.fun.banhammer"}, description="Drop the ban hammer.")
-public class BanHammerCommand implements ICommand {
+public class BanHammerCommand extends ICommand {
 
+	public BanHammerCommand() {
+		super("banhammer");
+		setDescription("Drop the ban hammer");
+		setCategory(Category.FUN);
+		setPermissions("ajstri.fun.banhammer");
+	}
+	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		e.sendMessage("I can drop the BAN HAMMER on you!");

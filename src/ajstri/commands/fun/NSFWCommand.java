@@ -3,13 +3,17 @@ package ajstri.commands.fun;
 import java.awt.Color;
 
 import quack.ddbl.core.api.nsfw.*;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"nsfw"}, permissions={"ajstri.fun.nsfw"}, description="NSFW!!!")
-public class NSFWCommand implements ICommand {
+public class NSFWCommand extends ICommand {
 
+	public NSFWCommand() {
+		super("nsfw");
+		setDescription("NSFW!");
+		setPermissions("ajstri.fun.nsfw");
+	}
+	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.args.length==2) {

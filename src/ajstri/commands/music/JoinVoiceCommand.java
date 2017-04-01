@@ -4,13 +4,19 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import ajstri.Category;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"join"}, category=Category.MUSIC, permissions={"ajstri.music.join"}, description="Make Bot join a VoiceChannel")
-public class JoinVoiceCommand implements ICommand {
+public class JoinVoiceCommand extends ICommand {
 
+	public JoinVoiceCommand() {
+		super("join");
+		setCategory(Category.MUSIC);
+		setPermissions("ajstri.music.join");
+		setDescription("Make the Bot join a Voice Channel");
+		setGuildOnly(true);
+	}
+	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.args.length==1) {

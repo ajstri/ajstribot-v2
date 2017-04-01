@@ -1,12 +1,18 @@
 package ajstri.commands.music;
 
 import ajstri.Category;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"nowplaying", "np"}, category=Category.MUSIC, permissions={"ajstri.music.nowplaying"}, description="See the current playing track")
-public class NowPlayingCommand implements ICommand {
+public class NowPlayingCommand extends ICommand {
+	
+	public NowPlayingCommand() {
+		super("nowplaying", "np");
+		setGuildOnly(true);
+		setCategory(Category.MUSIC);
+		setPermissions("ajstri.music.nowplaying");
+		setDescription("See the currently playing track");
+	}
 	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {

@@ -1,13 +1,18 @@
 package ajstri.commands.generic;
 
 import ajstri.Category;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"welcome"}, category=Category.GENERIC, description="Welcome, let's get started!")
-public class WelcomeCommand implements ICommand {
+public class WelcomeCommand extends ICommand {
 
+	public WelcomeCommand() {
+		super("welcome");
+		setCategory(Category.GENERIC);
+		setDescription("Welcome, let's get started!");
+		setPermissions("ajstri.generic.welcome");
+	}
+	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		e.sendPrivateMessage(e.getAuthor(), 

@@ -1,12 +1,18 @@
 package ajstri.commands.music;
 
 import ajstri.Category;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"skip"}, category=Category.MUSIC, permissions={"ajstri.music.skip"}, description="Skip the current Track")
-public class SkipCommand implements ICommand {
+public class SkipCommand extends ICommand {
+	
+	public SkipCommand() {
+		super("skip");
+		setCategory(Category.MUSIC);
+		setPermissions("ajstri.music.skip");
+		setGuildOnly(true);
+		setDescription("Skip the current song");
+	}
 	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {

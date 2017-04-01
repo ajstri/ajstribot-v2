@@ -6,14 +6,19 @@ import ajstri.Category;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 import quack.ddbl.core.utils.MemberUtils;
 
-@Command(aliases={"userinfo"}, category=Category.ADMIN, guildOnly=true, jdaPermissions={Permission.ADMINISTRATOR}, isJDAPermission=true, description="See some information about a User.")
-public class UserInfoCommand implements ICommand {
+public class UserInfoCommand extends ICommand {
 
+	public UserInfoCommand() {
+		super("userinfo");
+		setDescription("See User Information");
+		setCategory(Category.ADMIN);
+		setPermissions(Permission.ADMINISTRATOR);
+	}
+	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.isGuildMessage()) {

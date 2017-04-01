@@ -3,12 +3,17 @@ package ajstri.commands.admin;
 import ajstri.Category;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"getid"}, category=Category.ADMIN, jdaPermissions={Permission.ADMINISTRATOR}, isJDAPermission=true, description="Get the ID of an User.")
-public class GetIDCommand implements ICommand {
+public class GetIDCommand extends ICommand {
+	
+	public GetIDCommand() {
+		super("getid");
+		setDescription("Get the ID of a User");
+		setCategory(Category.ADMIN);
+		setPermissions(Permission.ADMINISTRATOR);
+	}
 
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {

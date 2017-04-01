@@ -4,13 +4,17 @@ import java.awt.Color;
 
 import ajstri.Category;
 import quack.ddbl.core.api.Explosm_API;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"explosm", "ex"}, category=Category.FUN, description="Random Explosm")
-public class ExplosmCommand implements ICommand {
+public class ExplosmCommand extends ICommand {
 
+	public ExplosmCommand() {
+		super("explosm", "ex");
+		setDescription("Random Explosm");
+		setCategory(Category.FUN);
+	}
+	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.args.length==1) Explosm_API.getRandomExplosmComic().after(c -> {

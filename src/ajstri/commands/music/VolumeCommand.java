@@ -4,13 +4,19 @@ import java.awt.Color;
 
 import ajstri.Category;
 import net.dv8tion.jda.core.EmbedBuilder;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 
-@Command(aliases={"volume", "v"}, category=Category.MUSIC, description="Volume...", permissions={"ajstri.music.volume"})
-public class VolumeCommand implements ICommand {
+public class VolumeCommand extends ICommand {
 
+	public VolumeCommand() {
+		super("volume", "v");
+		setCategory(Category.MUSIC);
+		setPermissions("ajstri.music.volume");
+		setGuildOnly(true);
+		setDescription("Change the volume");
+	}
+	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.args.length==1) e.getAudioManager().volumeWOAction(e);

@@ -7,14 +7,20 @@ import java.util.stream.Collectors;
 import ajstri.Category;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Role;
-import quack.ddbl.core.commands.Command;
 import quack.ddbl.core.commands.ICommand;
 import quack.ddbl.core.event.ExtendedMessageReceivedEvent;
 import quack.ddbl.core.utils.RoleUtils;
 
-@Command(aliases={"roleinfo"}, category=Category.ADMIN, guildOnly=true, jdaPermissions={Permission.ADMINISTRATOR}, isJDAPermission=true, description="See some information about an Role...")
-public class RoleInfoCommand implements ICommand {
+public class RoleInfoCommand extends ICommand {
 
+	public RoleInfoCommand() {
+		super("roleinfo");
+		setCategory(Category.ADMIN);
+		setDescription("Role Information");
+		setGuildOnly(true);
+		setPermissions(Permission.ADMINISTRATOR);
+	}
+	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.args.length>=2) {
