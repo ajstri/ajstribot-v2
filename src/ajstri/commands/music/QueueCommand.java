@@ -11,7 +11,8 @@ public class QueueCommand implements ICommand {
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.args.length == 2 && e.args[0].contains("queue")) {
-			e.getAudioManager().play(e.args[1], e);
+			//e.getAudioManager().play(e.args[1], e);
+			e.getAudioManager().play("https://www.youtube.com/watch?v=E1W7egBC0k", e);
 			return;
 		}
 		e.getAudioManager().listWOAction(e);

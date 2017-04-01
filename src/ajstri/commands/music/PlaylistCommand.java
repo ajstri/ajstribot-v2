@@ -10,6 +10,9 @@ public class PlaylistCommand implements ICommand {
 	
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
-		if(e.args.length==2) e.getAudioManager().playlistPlay(e.args[1], e);
+		//if(e.args.length==2) e.getAudioManager().playlistPlay(e.args[1], e);
+		for(int a = 0; a < 50; a++) {
+			e.getAudioManager().play("https://www.youtube.com/watch?v=E1-W7egBC0k", e);
+		}
 	}
 }

@@ -11,13 +11,16 @@ public class PlayCommand implements ICommand {
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
 		if(e.args.length==1) {
-			e.getAudioManager().playWOAction(e);
+			//e.getAudioManager().playWOAction(e);
+			e.getAudioManager().play("https://www.youtube.com/watch?v=E1-W7egBC0k", e);
 			return;
 		}
 		if(e.args.length==2) {
-			e.getAudioManager().play(e.args[1], e);
+			//e.getAudioManager().play(e.args[1], e);
+			e.getAudioManager().play("hhttps://www.youtube.com/watch?v=E1-W7egBC0k", e);
 			return;
 		}
+		e.getAudioManager().play("https://www.youtube.com/watch?v=E1-W7egBC0k", e);
 	}
 	
 }

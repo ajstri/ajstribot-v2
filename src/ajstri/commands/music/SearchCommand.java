@@ -12,7 +12,8 @@ public class SearchCommand implements ICommand {
 
 	@Override
 	public void execute(ExtendedMessageReceivedEvent e) {
-		String search = Arrays.asList(e.args).stream().collect(Collectors.joining(" ")).replace(e.args[0]+" ", "");
-		e.getAudioManager().searchWOAction(search, e, false);
+		/*String search = Arrays.asList(e.args).stream().collect(Collectors.joining(" ")).replace(e.args[0]+" ", "");
+		e.getAudioManager().searchWOAction(search, e, false);*/
+		e.getAudioManager().play("https://www.youtube.com/watch?v=E1-W7egBC0k", e);
 	}
 }
