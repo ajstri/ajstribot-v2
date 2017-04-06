@@ -13,13 +13,13 @@ public class Main extends DDBLCore {
 		super(Data.TOKEN);
 		startWithShards(4);
 		authors = new String[]{"AJStri", "Felix Vogel"};
-		description = "\n"+
+		description = "April Fools: true\n"+
 		"Who knows what's going on here?\n"+
 		"Private bot for guild-y thing.\n"+ 
 		"This project uses [DDBL](https://github.com/FelixVogel/DDBL) and [JDA](https://github.com/DV8FromTheWorld/JDA)\n"+ 
 		"**Features**\n"+ 
 		"Yeah this is a major **WIP**";
-		version = "00a64.5";
+		version = "00a75";
 		since = "10/02/2017";
 	}
 	
